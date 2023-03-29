@@ -1,6 +1,6 @@
 import { Type } from './type';
 
-export class product {
+export class Product {
     public id: number;
     public name: String;
     public stock: number;
