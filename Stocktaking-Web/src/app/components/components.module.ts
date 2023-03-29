@@ -14,6 +14,8 @@ import { UpdateSuppliersComponentComponent } from './Suppliers/update-suppliers-
 import { CardTypesComponentComponent } from './Types/card-types-component/card-types-component.component';
 import { ListTypesComponentComponent } from './Types/list-types-component/list-types-component.component';
 import { UpdateTypesComponentComponent } from './Types/update-types-component/update-types-component.component';
+import { LoginComponentComponent } from './LoginRegister/login-component/login-component.component';
+import { RegisterComponentComponent } from './LoginRegister/register-component/register-component.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UpdateTypesComponentComponent } from './Types/update-types-component/up
     UpdateSuppliersComponentComponent,
     CardTypesComponentComponent,
     ListTypesComponentComponent,
-    UpdateTypesComponentComponent
+    UpdateTypesComponentComponent,
+    LoginComponentComponent,
+    RegisterComponentComponent
   ],
   imports: [
     CommonModule,
