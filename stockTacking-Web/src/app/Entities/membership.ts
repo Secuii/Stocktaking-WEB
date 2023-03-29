@@ -1,4 +1,4 @@
-export class membership {
+export class Membership {
     public id: number;
     public name: String;
     public price: number;
