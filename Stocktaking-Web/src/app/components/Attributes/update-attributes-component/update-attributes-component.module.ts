@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UpdateAttributesComponentRoutingModule } from './update-attributes-component-routing.module';
+import { UpdateAttributesComponentComponent } from './update-attributes-component.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UpdateAttributesComponentComponent
+  ],
   imports: [
     CommonModule,
-    UpdateAttributesComponentRoutingModule
+    RouterModule,
+  ],
+  exports: [
+    UpdateAttributesComponentComponent
   ]
 })
 export class UpdateAttributesComponentModule { }

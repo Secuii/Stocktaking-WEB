@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CardAttributesComponentRoutingModule } from './card-attributes-component-routing.module';
-
+import { RouterModule } from '@angular/router';
+import { CardAttributesComponentComponent } from './card-attributes-component.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CardAttributesComponentComponent
+  ],
   imports: [
     CommonModule,
-    CardAttributesComponentRoutingModule
+    RouterModule,
+  ],
+  exports: [
+    CardAttributesComponentComponent
   ]
 })
 export class CardAttributesComponentModule { }
