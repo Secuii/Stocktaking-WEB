@@ -24,13 +24,14 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
+            "styles": 
+            [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
+            "scripts": 
+            [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
@@ -99,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "f5d49715-5adb-4c21-8960-587981fdc4d5"
   }
 }

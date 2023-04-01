@@ -1,3 +1,4 @@
+import { ListProductsComponentModule } from './Products/list-products-component/list-products-component.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -37,7 +38,8 @@ import { RegisterComponentComponent } from './LoginRegister/register-component/r
   ],
   imports: [
     CommonModule,
-    ComponentsRoutingModule
+    ComponentsRoutingModule, 
+    ListProductsComponentModule
   ]
 })
 export class ComponentsModule { }
