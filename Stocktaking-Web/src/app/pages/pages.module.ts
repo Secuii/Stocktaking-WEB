@@ -11,6 +11,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SupplierPageComponent } from './supplier-page/supplier-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
+import { ComponentsModule } from '../components/components.module';
+import { MainPageModule } from './main-page/main-page.module';
 
 
 @NgModule({
@@ -18,7 +20,7 @@ import { TypePageComponent } from './type-page/type-page.component';
     ClientPageComponent,
     GraphicsPageComponent,
     LoginPageComponent,
-    MainPageComponent,
+    //MainPageComponent,
     ProductPageComponent,
     RegisterPageComponent,
     SearchPageComponent,
@@ -27,7 +29,9 @@ import { TypePageComponent } from './type-page/type-page.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    MainPageModule,
+    ComponentsModule
   ]
 })
 export class PagesModule { }

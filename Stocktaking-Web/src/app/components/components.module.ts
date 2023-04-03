@@ -22,10 +22,10 @@ import { RegisterComponentComponent } from './LoginRegister/register-component/r
 @NgModule({
   declarations: [
     CardClientComponentComponent,
-    ListClientComponentComponent,
+    //ListClientComponentComponent,
     UpdateClientComponentComponent,
     CardProductsComponentComponent,
-    ListProductsComponentComponent,
+    //ListProductsComponentComponent,
     UpdateProductsComponentComponent,
     ListSuppliersComponentComponent,
     CardSuppliersComponentComponent,
