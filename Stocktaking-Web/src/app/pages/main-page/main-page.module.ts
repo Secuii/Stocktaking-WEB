@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MainPageRoutingModule } from './main-page-routing.module';
+import { ComponentsModule } from 'src/app/components/components.module';
+import { PagesModule } from '../pages.module';
 
 
 @NgModule({
@@ -13,7 +15,8 @@ import { MainPageRoutingModule } from './main-page-routing.module';
   imports: [
     CommonModule,
     MainPageRoutingModule,
-    ListProductsComponentModule
+    ComponentsModule,
+    PagesModule
   ]
 })
 export class MainPageModule { }

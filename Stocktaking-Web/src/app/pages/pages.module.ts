@@ -30,7 +30,7 @@ import { MainPageModule } from './main-page/main-page.module';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    MainPageModule,
+    //MainPageModule,
     ComponentsModule
   ]
 })

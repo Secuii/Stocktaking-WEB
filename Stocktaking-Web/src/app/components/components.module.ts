@@ -40,6 +40,9 @@ import { RegisterComponentComponent } from './LoginRegister/register-component/r
     CommonModule,
     ComponentsRoutingModule, 
     ListProductsComponentModule
+  ],
+  exports: [
+    ListProductsComponentModule
   ]
 })
 export class ComponentsModule { }
