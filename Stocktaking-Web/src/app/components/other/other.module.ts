@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { OtherRoutingModule } from './other-routing.module';
-import { SearchComponentComponent } from './search-component/search-component.component';
+import { SearchComponentModule } from './search-component/search-component.module';
 
 
 @NgModule({
-  declarations: [
-    SearchComponentComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
-    OtherRoutingModule
+    OtherRoutingModule,
+    SearchComponentModule
+  ],
+  exports: [
+    SearchComponentModule
   ]
 })
 export class OtherModule { }

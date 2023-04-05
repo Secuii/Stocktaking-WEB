@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { UpdateTypesComponentRoutingModule } from './update-types-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { UpdateTypesComponentComponent } from './update-types-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UpdateTypesComponentComponent
+  ],
   imports: [
     CommonModule,
-    UpdateTypesComponentRoutingModule
+    RouterModule
+  ],
+  exports: [
+    UpdateTypesComponentComponent
   ]
 })
 export class UpdateTypesComponentModule { }

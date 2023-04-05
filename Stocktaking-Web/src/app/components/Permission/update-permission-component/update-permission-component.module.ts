@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { UpdatePermissionComponentRoutingModule } from './update-permission-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { UpdatePermissionComponentComponent } from './update-permission-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UpdatePermissionComponentComponent
+  ],
   imports: [
     CommonModule,
-    UpdatePermissionComponentRoutingModule
+    RouterModule
+  ],
+  exports: [
+    UpdatePermissionComponentComponent
   ]
 })
 export class UpdatePermissionComponentModule { }

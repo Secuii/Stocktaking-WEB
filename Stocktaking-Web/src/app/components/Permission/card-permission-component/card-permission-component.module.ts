@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CardPermissionComponentRoutingModule } from './card-permission-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { CardPermissionComponentComponent } from './card-permission-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CardPermissionComponentComponent
+  ],
   imports: [
     CommonModule,
-    CardPermissionComponentRoutingModule
+    RouterModule
+  ],
+  exports: [
+    CardPermissionComponentComponent
   ]
 })
 export class CardPermissionComponentModule { }

@@ -11,23 +11,26 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SupplierPageComponent } from './supplier-page/supplier-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
+import { ComponentsModule } from '../components/components.module';
+
 
 
 @NgModule({
   declarations: [
-    ClientPageComponent,
-    GraphicsPageComponent,
-    LoginPageComponent,
-    MainPageComponent,
-    ProductPageComponent,
-    RegisterPageComponent,
-    SearchPageComponent,
-    SupplierPageComponent,
-    TypePageComponent
+    //ClientPageComponent,
+    //GraphicsPageComponent,
+    //LoginPageComponent,
+    //MainPageComponent,
+    //ProductPageComponent,
+    //RegisterPageComponent,
+    //SearchPageComponent,
+    //SupplierPageComponent,
+    //TypePageComponent
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule, 
+    ComponentsModule
   ]
 })
 export class PagesModule { }

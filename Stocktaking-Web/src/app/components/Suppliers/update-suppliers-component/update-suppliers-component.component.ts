@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-update-suppliers-component',
   templateUrl: './update-suppliers-component.component.html',
-  styleUrls: ['./update-suppliers-component.component.css']
+  styleUrls: ['./../../components.css']
 })
 export class UpdateSuppliersComponentComponent {
 
