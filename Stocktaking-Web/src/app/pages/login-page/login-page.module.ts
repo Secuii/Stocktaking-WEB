@@ -3,14 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { LoginPageRoutingModule } from './login-page-routing.module';
 import { PagesModule } from '../pages.module';
+import { AppModule } from 'src/app/app.module';
+import { LoginPageComponent } from './login-page.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    LoginPageComponent
+  ],
   imports: [
-    CommonModule,
-    LoginPageRoutingModule,
-    PagesModule
+    //CommonModule,
+    //LoginPageRoutingModule,
+    AppModule
+  ],
+  exports: [
+    LoginPageComponent
   ]
 })
 export class LoginPageModule { }

@@ -5,6 +5,7 @@ import { MainPageRoutingModule } from './main-page-routing.module';
 import { PagesModule } from '../pages.module';
 import { MainPageComponent } from './main-page.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { AppModule } from 'src/app/app.module';
 
 
 @NgModule({
@@ -12,10 +13,14 @@ import { ComponentsModule } from 'src/app/components/components.module';
     MainPageComponent
   ],
   imports: [
-    CommonModule,
-    MainPageRoutingModule,
-    ComponentsModule,
-    PagesModule
+    //CommonModule,
+    //MainPageRoutingModule,
+    AppModule
+    //ComponentsModule,
+    //PagesModule,
+  ],
+  exports: [
+    //MainPageComponent
   ]
 })
 export class MainPageModule { }

@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ListClientComponentComponent } from './list-client-component.component';
 
-//import { ListClientComponentRoutingModule } from './list-client-component-routing.module';
-
 
 @NgModule({
   declarations: [
@@ -13,7 +11,6 @@ import { ListClientComponentComponent } from './list-client-component.component'
   imports: [
     CommonModule,
     RouterModule
-    //ListClientComponentRoutingModule
   ],
   exports: [
     ListClientComponentComponent

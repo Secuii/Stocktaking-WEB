@@ -20,7 +20,7 @@ import { ListClientComponentComponent } from './Clients/list-client-component/li
 @NgModule({
   declarations: [  ],
   imports: [
-    CommonModule,
+    //CommonModule,
     ComponentsRoutingModule,
     AttributesComponentModule,
     ClientComponentModule,
@@ -36,7 +36,7 @@ import { ListClientComponentComponent } from './Clients/list-client-component/li
     ListClientComponentModule    
   ],
   exports: [
-    CommonModule,
+    //CommonModule,
     ComponentsRoutingModule,
     AttributesComponentModule,
     ClientComponentModule,

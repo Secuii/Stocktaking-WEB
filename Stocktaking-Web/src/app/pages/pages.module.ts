@@ -12,6 +12,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { SupplierPageComponent } from './supplier-page/supplier-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { ComponentsModule } from '../components/components.module';
+import { MainPageModule } from './main-page/main-page.module';
+import { SupplierPageModule } from './supplier-page/supplier-page.module';
 
 
 
@@ -29,8 +31,10 @@ import { ComponentsModule } from '../components/components.module';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule, 
-    ComponentsModule
+    PagesRoutingModule,
+    //MainPageModule,
+    //SupplierPageModule 
+    //ComponentsModule
   ]
 })
 export class PagesModule { }
