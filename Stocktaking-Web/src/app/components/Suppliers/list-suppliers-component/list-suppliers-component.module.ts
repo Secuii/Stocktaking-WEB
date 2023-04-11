@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ListSuppliersComponentRoutingModule } from './list-suppliers-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { ListSuppliersComponentComponent } from './list-suppliers-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListSuppliersComponentComponent
+  ],
   imports: [
     CommonModule,
-    ListSuppliersComponentRoutingModule
+    RouterModule
+  ],
+  exports: [
+    ListSuppliersComponentComponent
   ]
 })
 export class ListSuppliersComponentModule { }

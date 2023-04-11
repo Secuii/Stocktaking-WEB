@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { FooterRoutingModule } from './footer-routing.module';
 import { FooterComponent } from '../footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -11,7 +10,10 @@ import { FooterComponent } from '../footer/footer.component';
   ],
   imports: [
     CommonModule,
-    FooterRoutingModule
+    RouterModule
+  ],
+  exports: [
+    FooterComponent
   ]
 })
 export class FooterModule { }
