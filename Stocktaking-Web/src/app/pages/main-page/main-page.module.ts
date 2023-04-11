@@ -1,16 +1,21 @@
-import { MainPageComponent } from './main-page.component';
 import { NgModule } from '@angular/core';
-import { AppModule } from 'src/app/app.module';
+import { MainPageComponent } from './main-page.component';
+import { AppModule } from './../../app.module';
 
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     MainPageComponent
   ],
-  imports: [
+  imports: 
+  [
     AppModule
+    //PagesModule
   ],
-  exports: [
+  exports: 
+  [
+    MainPageComponent
   ]
 })
 export class MainPageModule { }

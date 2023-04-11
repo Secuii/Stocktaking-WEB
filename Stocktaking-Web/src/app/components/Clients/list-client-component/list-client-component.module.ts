@@ -5,15 +5,21 @@ import { ListClientComponentComponent } from './list-client-component.component'
 
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     ListClientComponentComponent
   ],
-  imports: [
+  imports: 
+  [
     CommonModule,
     RouterModule
   ],
-  exports: [
+  exports: 
+  [
     ListClientComponentComponent
   ]
 })
-export class ListClientComponentModule { }
+export class ListClientComponentModule 
+{ 
+  
+}

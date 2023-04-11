@@ -6,16 +6,21 @@ import { UpdateClientComponentModule } from "./update-client-component/update-cl
 
 @NgModule({
     declarations: [],
-    imports: [
+    imports: 
+    [
       CardClientComponentModule,
       ListClientComponentModule,
       UpdateClientComponentModule
     ],
-    exports: [
+    exports: 
+    [
         CardClientComponentModule,
         ListClientComponentModule,
         UpdateClientComponentModule
     ]
   })
-  export class ClientComponentModule { }
+  export class ClientComponentModule 
+  { 
+    
+  }
   

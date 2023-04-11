@@ -1,5 +1,5 @@
-import { SuppliersComponentModule } from './Suppliers/suppliers.module';
 import { NgModule } from '@angular/core';
+import { SuppliersComponentModule } from './Suppliers/suppliers.module';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { ClientComponentModule } from './Clients/client.module';
 import { AttributesComponentModule } from './Attributes/attributes.module';
@@ -34,7 +34,6 @@ import { ListClientComponentModule } from './Clients/list-client-component/list-
   ],
   exports: 
   [
-    //CommonModule,
     ComponentsRoutingModule,
     AttributesComponentModule,
     ClientComponentModule,
