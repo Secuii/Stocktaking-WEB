@@ -13,25 +13,28 @@ import { SupplierPageComponent } from './supplier-page/supplier-page.component';
 import { TypePageComponent } from './type-page/type-page.component';
 import { ComponentsModule } from '../components/components.module';
 import { MainPageModule } from './main-page/main-page.module';
+import { SupplierPageModule } from './supplier-page/supplier-page.module';
+
 
 
 @NgModule({
   declarations: [
-    ClientPageComponent,
-    GraphicsPageComponent,
-    LoginPageComponent,
+    //ClientPageComponent,
+    //GraphicsPageComponent,
+    //LoginPageComponent,
     //MainPageComponent,
-    ProductPageComponent,
-    RegisterPageComponent,
-    SearchPageComponent,
-    SupplierPageComponent,
-    TypePageComponent
+    //ProductPageComponent,
+    //RegisterPageComponent,
+    //SearchPageComponent,
+    //SupplierPageComponent,
+    //TypePageComponent
   ],
   imports: [
     CommonModule,
     PagesRoutingModule,
     //MainPageModule,
-    ComponentsModule
+    //SupplierPageModule 
+    //ComponentsModule
   ]
 })
 export class PagesModule { }

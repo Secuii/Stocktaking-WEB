@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { ListTypesComponentRoutingModule } from './list-types-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { ListTypesComponentComponent } from './list-types-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ListTypesComponentComponent
+  ],
   imports: [
     CommonModule,
-    ListTypesComponentRoutingModule
+    RouterModule
+  ],
+  exports: [
+    ListTypesComponentComponent
   ]
 })
 export class ListTypesComponentModule { }
