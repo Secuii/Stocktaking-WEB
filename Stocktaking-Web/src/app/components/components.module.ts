@@ -35,18 +35,18 @@ import { ListClientComponentModule } from './Clients/list-client-component/list-
   exports: 
   [
     ComponentsRoutingModule,
-    AttributesComponentModule,
-    ClientComponentModule,
-    LoginRegisterComponentModule,
-    MembershipComponentModule,
+    //AttributesComponentModule,
+    //ClientComponentModule,
+    //LoginRegisterComponentModule,
+    //MembershipComponentModule,
     OtherModule,
     OutRoutingComponentModule,
-    PermissionComponentModule,
-    ProductsComponentModule,
-    SuppliersComponentModule,
-    TypesComponentModule,
-    UserComponentModule,
-    ListClientComponentModule
+    //PermissionComponentModule,
+    //ProductsComponentModule,
+    //SuppliersComponentModule,
+    //TypesComponentModule,
+    //UserComponentModule,
+    //ListClientComponentModule
   ]
 })
 export class ComponentsModule { }

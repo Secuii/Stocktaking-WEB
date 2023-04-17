@@ -18,6 +18,7 @@ import { ListClientComponentComponent } from './list-client-component.component'
   [
     ListClientComponentComponent
   ]
+  
 })
 export class ListClientComponentModule 
 { 
