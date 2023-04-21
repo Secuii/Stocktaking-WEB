@@ -1,1 +1,40 @@
 <p>list-suppliers-component works!</p>
+
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">SUPPLIERS LIST</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+<table class="table tableUser" >
+    <thead>
+      <tr class="trUser">
+        <th scope="col" class="" (click)="this.orderById()">Id</th>
+        <th scope="col" class="" (click)="this.orderByName()">Name</th>
+        <th scope="col" class="" (click)="this.orderByEmail()">Email</th>
+        <th scope="col" class="" (click)="this.orderByAddress()">Address</th>
+        <th scope="col" class="" (click)="this.orderByDescription()">Description</th>
+        <th scope="col" class="">Show More</th>
+        <th scope="col" class="">Products</th>
+        <th scope="col" class="">Edit</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
+        <td class=""> {{item?.id}} </td>
+        <td class=""> {{item?.name}} </td>
+        <td class=""> {{item?.email}} </td>
+        <td class=""> {{item?.address}} </td>
+        <td class=""> {{item?.description}} </td>
+        <td class=""> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showProductsBtn()"> PRODUCTS </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>

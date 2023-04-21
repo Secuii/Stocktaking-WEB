@@ -2,7 +2,7 @@ export class Supplier {
     public id: number;
     public name: String;
     public email: String;
-    public addres: String;
+    public address: String;
     public description: String;
     
   
@@ -10,7 +10,7 @@ export class Supplier {
       this.id = -1;
       this.name = "";
       this.email = "";
-      this.addres = "";
+      this.address = "";
       this.description = "";
     }
   }

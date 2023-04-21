@@ -1,1 +1,88 @@
 <p>update-membership-component works!</p>
+
+
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">MEMBERSHIPS UPDATE</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+<!--
+<div class="card divContainer" style="width: 39rem;">
+    
+    <form #OfferUpdateForm="ngForm" (ngSubmit)="this.submitMembershipUpdate(OfferUpdateForm.value)" >
+        <div class="sizeContent50">
+            <div class="divCenter">
+                <h4>Name</h4>
+            </div>
+            
+            <div class="divCenter">
+                <input type="text" class="form-control inputTittle" name="name" id="name" [(ngModel)]="this.membership.name" value="this.membership.titulo" (keyup)="this.checkAll()">
+            </div>
+            <div [class.labelGreenCorrect]="this.listMembershipChecker.checkTitulo.checkValid === true" [class.labelRedIncorrect] = "this.listMembershipChecker.checkTitulo.checkValid === false" class="divCenter">
+                <h6>{{this.listMembershipChecker.checkTitulo.message}}</h6>
+            </div>
+
+            
+            <div class="tableCard">
+                <div class="tdModify tdCardNormal"> Id </div>
+                <div class="tdModify tdCardNormal"> 
+                    {{membership.id}} 
+                </div>
+            </div>
+
+            <br>
+
+            <div class="tableCard">
+
+                <div class="tdModify tdCardNormal"> Name </div>
+                <div class="tdModify tdCardNormal"> 
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.membership.name" value="this.membership.name" (keyup)="this.checkAll()">
+                </div>
+
+                <div [class.labelGreenCorrect]="this.listMembershipChecker.checkEmpresa.checkValid === true" [class.labelRedIncorrect] = "this.listMembershipChecker.checkEmpresa.checkValid === false" class="divCenter">
+                    <h6>{{this.listMembershipChecker.checkEmpresa.message}}</h6>
+                </div>
+            </div>
+
+            <br>
+            
+            <div class="tableCard">
+                
+                <div class="tdModify tdCardNormal"> Price </div>
+                <div class="tdModify tdCardNormal"> 
+                    <input type="text" class="form-control" name="price" id="price" [(ngModel)]="this.membership.price" value="this.membership.price" (keyup)="this.checkAll()">
+                </div>
+
+
+                <div [class.labelGreenCorrect]="this.listMembershipChecker.checkSalario.checkValid === true" [class.labelRedIncorrect] = "this.listMembershipChecker.checkSalario.checkValid === false" class="divCenter">
+                    <h6>{{this.listMembershipChecker.checkSalario.message}}</h6>
+                </div>
+            </div>
+
+            <br>
+            
+            <div class="tableCard">
+
+                <div [class.labelGreenCorrect]="this.listMembershipChecker.checkEmail.checkValid === true" [class.labelRedIncorrect] = "this.listMembershipChecker.checkEmail.checkValid === false" class="divCenter">
+                    <h6>{{this.listMembershipChecker.checkEmail.message}}</h6>
+                </div>
+            </div>
+
+            <br>
+
+            <br>
+            
+            <div>
+                <div [class.labelGreenCorrect]="this.allValid === true" [class.labelRedIncorrect] = "this.allValid === false" class="divContainer">
+                    <h6>{{this.messageCompare}}</h6>
+                </div>
+
+                <div class="divCenter">
+                    <button type="submit" class="btn btn-primary btnCommon" [disabled]="!this.allValid"> Update </button> 
+                </div>
+            </div>
+           
+        </div>
+    </form>
+</div>
+-->

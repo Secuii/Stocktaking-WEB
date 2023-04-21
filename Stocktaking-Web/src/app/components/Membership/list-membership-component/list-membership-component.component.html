@@ -1,1 +1,36 @@
 <p>list-membership-component works!</p>
+
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">MEMBERSHIP LIST</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+<table class="table tableUser" >
+    <thead>
+      <tr class="trUser">
+        <th scope="col" class="" (click)="this.orderById()">Id</th>
+        <th scope="col" class="" (click)="this.orderByName()">Name</th>
+        <th scope="col" class="" (click)="this.orderByPrice()">Price</th>
+        <th scope="col" class="">Show More</th>
+        <th scope="col" class="">Users</th>
+        <th scope="col" class="">Edit</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
+        <td class=""> {{item?.id}} </td>
+        <td class=""> {{item?.name}} </td>
+        <td class=""> {{item?.price}} </td>
+        <td class=""> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> USERS </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>

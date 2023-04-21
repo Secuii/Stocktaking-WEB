@@ -1,1 +1,58 @@
 <p>card-suppliers-component works!</p>
+
+
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">SUPPLIERS CARD</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+
+
+<div class="card divCenter" style="width: 24rem;">
+    <div class="divFirstCard">
+        <label class="labelCard">
+            {{supplier.name}} <!-- Data Binding: Recoge del componente. -->
+        </label>
+    </div>
+    <div class="card-body divCenter">
+        <table class="tableCard">
+            <tbody>
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Id </td>
+                    <td class="tdUserNormal"> {{supplier.id}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Name </td>
+                    <td class="tdUserNormal"> {{supplier.name}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Email </td>
+                    <td class="tdUserNormal"> {{supplier.email}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Address </td>
+                    <td class="tdUserNormal"> {{supplier.address}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Description </td>
+                    <td class="tdUserNormal"> {{supplier.description}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Products </td>
+                    <button type="button" class="btn btn-primary btnCommon" (click)="this.showProductsBtn()"> PRODUCTS </button>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Edit </td>
+                    <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
