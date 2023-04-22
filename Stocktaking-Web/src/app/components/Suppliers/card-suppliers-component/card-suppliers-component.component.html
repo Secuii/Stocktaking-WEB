@@ -1,4 +1,4 @@
-<p>card-suppliers-component works!</p>
+<p>card-supplierretrieveds-component works!</p>
 
 
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
@@ -11,7 +11,7 @@
 <div class="card divCenter" style="width: 24rem;">
     <div class="divFirstCard">
         <label class="labelCard">
-            {{supplier.name}} <!-- Data Binding: Recoge del componente. -->
+            {{supplierRetrieved?.name}} <!-- Data Binding: Recoge del componente. -->
         </label>
     </div>
     <div class="card-body divCenter">
@@ -19,27 +19,27 @@
             <tbody>
                 <tr class="trUser">
                     <td class="tdCardNormal"> Id </td>
-                    <td class="tdUserNormal"> {{supplier.id}} </td>
+                    <td class="tdUserNormal"> {{supplierRetrieved?.id}} </td>
                 </tr>
 
                 <tr class="trUser">
                     <td class="tdCardNormal"> Name </td>
-                    <td class="tdUserNormal"> {{supplier.name}} </td>
+                    <td class="tdUserNormal"> {{supplierRetrieved?.name}} </td>
                 </tr>
 
                 <tr class="trUser">
                     <td class="tdCardNormal"> Email </td>
-                    <td class="tdUserNormal"> {{supplier.email}} </td>
+                    <td class="tdUserNormal"> {{supplierRetrieved?.email}} </td>
                 </tr>
 
                 <tr class="trUser">
                     <td class="tdCardNormal"> Address </td>
-                    <td class="tdUserNormal"> {{supplier.address}} </td>
+                    <td class="tdUserNormal"> {{supplierRetrieved?.address}} </td>
                 </tr>
 
                 <tr class="trUser">
                     <td class="tdCardNormal"> Description </td>
-                    <td class="tdUserNormal"> {{supplier.description}} </td>
+                    <td class="tdUserNormal"> {{supplierRetrieved?.description}} </td>
                 </tr>
 
                 <tr class="trUser">

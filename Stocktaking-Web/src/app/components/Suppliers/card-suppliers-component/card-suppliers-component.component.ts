@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from 'src/app/entities/supplier';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
   selector: 'app-card-suppliers-component',
@@ -13,16 +14,19 @@ export class CardSuppliersComponentComponent implements OnInit{
      /*
         Variales:
     */
-        public supplier: Supplier;
         public idSupplier: number;
+        public supplierRetrieved: Supplier | undefined;
     /*
         Constructor
     */
     constructor(private router: Router,
-                private activatedRoute: ActivatedRoute)
+                private activatedRoute: ActivatedRoute,
+                private supplierService: SupplierService)
     {
-        this.supplier= new Supplier();
-        this.idSupplier = 0;
+        //this.supplierRetrieved= new Supplier();
+        //this.idSupplier = '0';
+        this.idSupplier = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
+        this.supplierService.getSupplierById(this.idSupplier).subscribe(res => this.supplierRetrieved = res)
     }
 
     

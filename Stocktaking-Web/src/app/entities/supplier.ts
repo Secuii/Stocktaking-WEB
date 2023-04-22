@@ -1,4 +1,6 @@
 export class Supplier {
+
+
     public id: number;
     public name: String;
     public email: String;

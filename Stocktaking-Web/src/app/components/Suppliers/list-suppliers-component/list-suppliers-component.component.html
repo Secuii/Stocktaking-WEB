@@ -21,11 +21,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
-        <td class=""> {{item?.id}} </td>
-        <td class=""> {{item?.name}} </td>
-        <td class=""> {{item?.email}} </td>
-        <td class=""> {{item?.address}} </td>
-        <td class=""> {{item?.description}} </td>
+        <td class=""> {{item.id}} </td>
+        <td class=""> {{item.name}} </td>
+        <td class=""> {{item.email}} </td>
+        <td class=""> {{item.address}} </td>
+        <td class=""> {{item.description}} </td>
         <td class=""> 
             <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
         </td>
@@ -34,6 +34,9 @@
         </td>
         <td class="tdUserNormal"> 
             <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.deleteBtn(item.id)"> ELIMINAR </button> 
         </td>
       </tr>
     </tbody>

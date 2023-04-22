@@ -4,15 +4,15 @@ export class PathsUser
     static PATH_SERVER : string = "http://localhost:8080/stocktaking/";
 
     // Zona Membership
-    static MEMBERSHIP : string = "/membership";
-    static MEMBERSHIPS : string = "/membership";
+    static MEMBERSHIP : string = "membership";
+    static MEMBERSHIPS : string = "memberships";
 
     // Zona Product
-    static PERMISSION : string = "/permission";
-    static PERMISSIONS : string = "/permissions";
+    static PERMISSION : string = "permission";
+    static PERMISSIONS : string = "permissions";
 
     // Zona User
-    static USER : string = "/user";
-    static USERS : string = "/users";
+    static USER : string = "user";
+    static USERS : string = "users";
     
 }

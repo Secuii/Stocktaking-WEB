@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Supplier } from 'src/app/entities/supplier';
+import { SupplierService } from 'src/app/services/supplier.service';
 
 @Component({
   selector: 'app-list-suppliers-component',
@@ -13,13 +14,16 @@ export class ListSuppliersComponentComponent {
    /*
         Variales:
     */
-        public allDatas: Supplier[];
+        public allDatas: Supplier[] =[];
+        t_deleteFailed: string  = '';
     /*
         Constructor
     */
-    constructor(private router: Router)
+    constructor(private router: Router,
+        private supplierService: SupplierService)
     {
-        this.allDatas=[];
+        //this.allDatas=[];
+        this.supplierService.findSuppliers().subscribe(res => this.allDatas = res);
     }
     
 
@@ -99,5 +103,24 @@ export class ListSuppliersComponentComponent {
           }
       )*/
   }
+
+  //MÉTODO QUE ELIMINA EL SUPPLIER SELECCIONADO
+
+  public deleteBtn(id: number) 
+  {
+    this.t_deleteFailed = "";
+    this.supplierService.deleteSupplier(id).subscribe({
+      next: supplierDeleted => {
+        this.t_deleteFailed = "Se ha eliminado el proveedor.";
+        this.allDatas = this.allDatas.filter(supplier => supplier.id != supplierDeleted.id);
+      },
+      error: err => {
+        console.log(err)
+        this.t_deleteFailed = 'DELETE FAILED: ' + err.error.detail;
+        ;
+      }
+    });
+  }
+
 
 }
