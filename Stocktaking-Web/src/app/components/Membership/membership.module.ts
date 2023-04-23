@@ -4,16 +4,18 @@ import { ListMembershipComponentModule } from './list-membership-component/list-
 import { UpdateMembershipComponentModule } from './update-membership-component/update-membership-component.module';
 
 @NgModule({
-    declarations: [],
-    imports: [
+    declarations: 
+    [
+        
+    ],
+    imports: 
+    [
         CardMembershipComponentModule,
         ListMembershipComponentModule,
         UpdateMembershipComponentModule
     ],
-    exports: [
-        CardMembershipComponentModule,
-        ListMembershipComponentModule,
-        UpdateMembershipComponentModule
+    exports: 
+    [
     ]
   })
   export class MembershipComponentModule { }

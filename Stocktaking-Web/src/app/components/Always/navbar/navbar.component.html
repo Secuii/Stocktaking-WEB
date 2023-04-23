@@ -1,0 +1,65 @@
+<!-- Declaro el Navbar -->
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <!-- Declaro el div a la izquierda para el icono -->
+    <div class="collapse navbar-collapse" id="divNavIcon">
+        
+    </div>
+
+    <!-- Declaro el div central para las opciones -->
+    <div class="collapse navbar-collapse" id="divNavOptions">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/home">&nbsp;&nbsp; Home &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/type">
+                &nbsp;&nbsp; Type &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/attribute">
+                &nbsp;&nbsp; Attribute &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/product">
+                &nbsp;&nbsp; Product &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/client">
+                &nbsp;&nbsp; Client &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/supplier">
+                &nbsp;&nbsp; Supplier &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/user">
+                &nbsp;&nbsp; User &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/membership">
+                &nbsp;&nbsp; Membership &nbsp;&nbsp;</a>
+            </li>
+
+            <li class="nav-item" *ngIf="this.isLoged()">
+                <a class="nav-link" routerLink="/permission">
+                &nbsp;&nbsp; Permission &nbsp;&nbsp;</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Declaro el div a la derecha, para el logeo / registro -->
+    <div class="" id="divNavLogin">
+        <a class="navbar-brand" name="goToLogin" *ngIf="!this.isLoged()" routerLink="/login" id="goToLogin">&nbsp;&nbsp; Login &nbsp;&nbsp;</a>
+        <a class="navbar-brand" name="logOut" *ngIf="this.isLoged()" routerLink="/home" (click)="this.logOut()" id="logOut">&nbsp;&nbsp; Log Out &nbsp;&nbsp;</a>
+        <!--
+        <a class="navbar-brand" name="goToRegister" routerLink="/register" id="goToRegister">&nbsp;&nbsp; Register &nbsp;&nbsp;</a>
+        -->
+    </div>
+</nav>

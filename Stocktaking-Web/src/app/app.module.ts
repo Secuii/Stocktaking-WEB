@@ -22,8 +22,6 @@ import { RouterModule } from '@angular/router';
   ],
   exports: 
   [
-    //ComponentsModule,
-    //PagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
