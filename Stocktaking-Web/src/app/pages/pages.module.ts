@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { MainPageModule } from './main-page/main-page.module';
 import { TypePageModule } from './type-page/type-page.module';
 import { AttributePageModule } from './attribute-page/attribute-page.module';
@@ -7,6 +8,7 @@ import { ClientPageModule } from './client-page/client-page.module';
 import { UserPageModule } from './user-page/user-page.module';
 import { MembershipPageModule } from './membership-page/membership-page.module';
 import { PermissionPageModule } from './permission-page/permission-page.module';
+
 
 
 
@@ -23,7 +25,8 @@ import { PermissionPageModule } from './permission-page/permission-page.module';
     ClientPageModule,
     UserPageModule,
     MembershipPageModule,
-    PermissionPageModule
+    PermissionPageModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

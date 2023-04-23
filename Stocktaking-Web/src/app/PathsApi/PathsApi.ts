@@ -1,7 +1,7 @@
 export class PathsApi
 {
     //Zona Servidor
-    static PATH_SERVER : string = "http://localhost:8080/stocktaking/";
+    static PATH_SERVER : string = "/stocktaking/";
 
     // Zona Atribute
     static ATTRIBUTE : string = "attribute";

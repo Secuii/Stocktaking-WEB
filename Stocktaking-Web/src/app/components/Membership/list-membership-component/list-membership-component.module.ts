@@ -10,7 +10,7 @@ import { ListMembershipComponentComponent } from './list-membership-component.co
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule
   ],
   exports: [
     ListMembershipComponentComponent

@@ -1,7 +1,7 @@
 export class PathsUser
 {
     //Zona Servidor
-    static PATH_SERVER : string = "http://localhost:8080/stocktaking/";
+    static PATH_SERVER : string = "/stocktaking/";
 
     // Zona Membership
     static MEMBERSHIP : string = "membership";

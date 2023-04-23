@@ -1,13 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Membership } from 'src/app/entities/membership';
+import { MembershipService } from 'src/app/services/membership.service';
 
-@Component({
-  selector: 'app-list-membership-component',
-  templateUrl: './list-membership-component.component.html',
-  styleUrls: ['./../../components.css']
-})
-export class ListMembershipComponentComponent {
+@Component
+(
+    {
+        selector: 'app-list-membership-component',
+        templateUrl: './list-membership-component.component.html',
+        styleUrls: 
+        [
+            './../../components.css'
+        ],
+        providers:
+        [
+            MembershipService
+        ]
+    }
+)
+export class ListMembershipComponentComponent implements OnInit, OnDestroy
+{
 
    /*
         Variales:
@@ -16,9 +28,27 @@ export class ListMembershipComponentComponent {
     /*
         Constructor
     */
-    constructor(private router: Router)
+    constructor
+    (
+        private membershipService : MembershipService,
+        private router: Router
+    )
     {
         this.allDatas=[];
+    }
+
+    ngOnInit(): void 
+    {
+        this.membershipService.findMemberships().subscribe
+        (
+            response =>
+            {
+                this.allDatas = response;
+            }
+        )
+    }
+    ngOnDestroy(): void 
+    {
     }
     
 
@@ -27,7 +57,7 @@ export class ListMembershipComponentComponent {
   */
 
   public mainPageBtn() {
-    this.router.navigateByUrl('/main');
+    this.router.navigateByUrl('/home');
   }
 
   public showMoreBtn(id: number): void
