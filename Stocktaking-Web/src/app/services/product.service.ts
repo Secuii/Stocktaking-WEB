@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { PathsUser } from './../PathsApi/PathsUser';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PathsApi } from '../PathsApi/PathsApi';
 
 
 @Injectable()
@@ -16,9 +17,9 @@ export class ProductService
   constructor(private http: HttpClient) 
   {
     
-    this._baseUrl = PathsUser.PATH_SERVER;
-    this._product = PathsUser.PERMISSION;
-    this._products = PathsUser.PERMISSIONS;
+    this._baseUrl = PathsApi.PATH_SERVER;
+    this._product = PathsApi.PRODUCT;
+    this._products = PathsApi.PRODUCTS;
   }
 
 

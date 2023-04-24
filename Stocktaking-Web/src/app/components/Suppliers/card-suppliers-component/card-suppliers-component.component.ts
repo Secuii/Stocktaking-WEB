@@ -6,7 +6,11 @@ import { SupplierService } from 'src/app/services/supplier.service';
 @Component({
   selector: 'app-card-suppliers-component',
   templateUrl: './card-suppliers-component.component.html',
-  styleUrls: ['./../../components.css']
+  styleUrls: ['./../../components.css'],
+  providers:
+  [
+      SupplierService
+  ]
 })
 export class CardSuppliersComponentComponent implements OnInit{
 

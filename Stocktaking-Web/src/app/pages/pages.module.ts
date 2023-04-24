@@ -8,6 +8,7 @@ import { ClientPageModule } from './client-page/client-page.module';
 import { UserPageModule } from './user-page/user-page.module';
 import { MembershipPageModule } from './membership-page/membership-page.module';
 import { PermissionPageModule } from './permission-page/permission-page.module';
+import { SupplierPageModule } from './supplier-page/supplier-page.module';
 
 
 
@@ -26,6 +27,7 @@ import { PermissionPageModule } from './permission-page/permission-page.module';
     UserPageModule,
     MembershipPageModule,
     PermissionPageModule,
+    SupplierPageModule,
     HttpClientModule
   ]
 })

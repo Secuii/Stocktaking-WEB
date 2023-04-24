@@ -26,7 +26,7 @@ export class TypeService
 
   findTypes(): Observable<Type[]>
   {
-    var url: string = this._baseUrl + this._type
+    var url: string = this._baseUrl + this._types
     return this.http.get<Type[]>(url);
   }
 

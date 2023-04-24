@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PagesModule } from '../pages.module';
 import { SupplierPageComponent } from './supplier-page.component';
 import { AppModule } from 'src/app/app.module';
+import { ListSuppliersComponentModule } from 'src/app/components/Suppliers/list-suppliers-component/list-suppliers-component.module';
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import { AppModule } from 'src/app/app.module';
   imports: [
     //CommonModule,
     //SupplierPageRoutingModule,
-    AppModule
+    ListSuppliersComponentModule
   ],
   exports: [
     SupplierPageComponent

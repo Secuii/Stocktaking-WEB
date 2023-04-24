@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { TypePageComponent } from './type-page.component';
+import { ListTypesComponentModule } from 'src/app/components/Types/list-types-component/list-types-component.module';
 
 
 @NgModule({
@@ -9,6 +10,7 @@ import { TypePageComponent } from './type-page.component';
   ],
   imports: 
   [
+    ListTypesComponentModule
     //AppModule
   ],
   exports: 

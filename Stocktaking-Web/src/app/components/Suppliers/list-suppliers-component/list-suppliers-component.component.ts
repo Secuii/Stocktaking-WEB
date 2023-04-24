@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Supplier } from 'src/app/entities/supplier';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -6,15 +6,19 @@ import { SupplierService } from 'src/app/services/supplier.service';
 @Component({
   selector: 'app-list-suppliers-component',
   templateUrl: './list-suppliers-component.component.html',
-  styleUrls: ['./../../components.css']
+  styleUrls: ['./../../components.css'],
+  providers:
+  [
+      SupplierService
+  ]
 })
-export class ListSuppliersComponentComponent {
+export class ListSuppliersComponentComponent implements OnInit, OnDestroy {
 
 
    /*
         Variales:
     */
-        public allDatas: Supplier[] =[];
+        public allDatas: Supplier[];
         t_deleteFailed: string  = '';
     /*
         Constructor
@@ -22,8 +26,22 @@ export class ListSuppliersComponentComponent {
     constructor(private router: Router,
         private supplierService: SupplierService)
     {
-        //this.allDatas=[];
-        this.supplierService.findSuppliers().subscribe(res => this.allDatas = res);
+        this.allDatas=[];
+        //this.supplierService.findSuppliers().subscribe(res => this.allDatas = res);
+    }
+    
+    ngOnInit(): void 
+    {
+        this.supplierService.findSuppliers().subscribe
+        (
+            response =>
+            {
+                this.allDatas = response;
+            }
+        )
+    }
+    ngOnDestroy(): void 
+    {
     }
     
 

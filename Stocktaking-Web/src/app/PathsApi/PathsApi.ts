@@ -17,7 +17,7 @@ export class PathsApi
 
     // Zona Supplier
     static SUPPLIER : string = "supplier";
-    static SUPPLIERS : string = "supliers";
+    static SUPPLIERS : string = "suppliers";
 
     // Zona Type
     static TYPE : string = "type";
