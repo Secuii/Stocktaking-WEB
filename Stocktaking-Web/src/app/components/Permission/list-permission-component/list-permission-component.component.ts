@@ -6,7 +6,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-list-permission-component',
   templateUrl: './list-permission-component.component.html',
-  styleUrls: ['./../../components.css']
+  styleUrls: ['./../../components.css'],
+  providers: [PermissionService, Router]
 })
 export class ListPermissionComponentComponent implements OnInit, OnDestroy
 {
