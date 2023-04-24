@@ -33,7 +33,7 @@ export class ListPermissionComponentComponent implements OnInit, OnDestroy
       (
           response =>
           {
-           //   this.allDatas = response;
+              this.allDatas = response;
           }
       )
     }
