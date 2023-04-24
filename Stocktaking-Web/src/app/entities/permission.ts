@@ -1,4 +1,4 @@
-export class permission 
+export class Permission
 {
     public id: number;
     public name: String;
