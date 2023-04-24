@@ -1,1 +1,44 @@
-<p>card-products-component works!</p>
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">PRODUCTS LIST</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+
+<div class="card divCenter" style="width: 24rem;">
+    <div class="divFirstCard">
+        <label class="labelCard">
+            {{products.name}} <!-- Data Binding: Recoge del componente. -->
+        </label>
+    </div>
+    <div class="card-body divCenter">
+        <table class="tableCard">
+            <tbody>
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Id </td>
+                    <td class="tdUserNormal"> {{products.id}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Name </td>
+                    <td class="tdUserNormal"> {{products.name}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Stock </td>
+                    <td class="tdUserNormal"> {{products.stock}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Type </td>
+                    <td class="tdUserNormal"> {{products.type}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Users </td>
+                    <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> Users </button>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>

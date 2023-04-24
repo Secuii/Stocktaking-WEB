@@ -10,11 +10,6 @@ import { UpdateProductsComponentModule } from "./update-products-component/updat
         CardProductsComponentModule,
         ListProductsComponentModule,
         UpdateProductsComponentModule
-    ],
-    exports: [
-        CardProductsComponentModule,
-        ListProductsComponentModule,
-        UpdateProductsComponentModule
     ]
   })
   export class ProductsComponentModule { }

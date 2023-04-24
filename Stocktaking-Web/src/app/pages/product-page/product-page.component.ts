@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
     selector: 'app-product-page',
     templateUrl: './product-page.component.html',
     styleUrls: ['../pages.css']
+    
   }
 )
 export class ProductPageComponent {
