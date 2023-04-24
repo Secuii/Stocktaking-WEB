@@ -1,1 +1,42 @@
 <p>card-permission-component works!</p>
+
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center  mx-auto d-block">PERMISSIONS LIST</h1>
+    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+</div>
+
+
+
+<div class="card divCenter" style="width: 24rem;">
+    <div class="divFirstCard">
+        <label class="labelCard">
+            {{permissions.name}} <!-- Data Binding: Recoge del componente. -->
+        </label>
+    </div>
+    <div class="card-body divCenter">
+        <table class="tableCard">
+            <tbody>
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Id </td>
+                    <td class="tdUserNormal"> {{permissions.id}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Name </td>
+                    <td class="tdUserNormal"> {{permissions.name}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Description </td>
+                    <td class="tdUserNormal"> {{permissions.description}} </td>
+                </tr>
+
+                <tr class="trUser">
+                    <td class="tdCardNormal"> Users </td>
+                    <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> Users </button>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</div>
