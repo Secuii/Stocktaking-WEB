@@ -1,4 +1,4 @@
-import { permission } from './../../../entities/permission';
+import { Permission } from './../../../entities/permission';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +12,7 @@ export class CardPermissionComponentComponent implements OnInit{
   /*
      Variales:
  */
-     public permissions: permission;
+     public permissions: Permission;
      public idPermissions: number;
  /*
      Constructor
@@ -20,7 +20,7 @@ export class CardPermissionComponentComponent implements OnInit{
  constructor(private router: Router,
              private activatedRoute: ActivatedRoute)
  {
-     this.permissions= new permission();
+     this.permissions= new Permission();
      this.idPermissions = 0;
  }
 

@@ -1,3 +1,5 @@
+import { Permission } from './../../../entities/permission';
+import { PermissionService } from './../../../services/permissions.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
@@ -12,13 +14,13 @@ export class ListPermissionComponentComponent implements OnInit, OnDestroy
    /*
         Variales:
     */
-        public allDatas: Permissions[];
+        public allDatas: Permission[];
     /*
         Constructor
     */
     constructor
     (
-        
+        private permissionService : PermissionService,
         private router: Router
     )
     {
@@ -27,17 +29,14 @@ export class ListPermissionComponentComponent implements OnInit, OnDestroy
 
     ngOnInit(): void 
     {
-       /*
-      this.permisionsService.findPermissions().subscribe
-        (
-            response =>
-            {
-                this.allDatas = response;
-            }
-        )
-      */
+      this.permissionService.findPermissions().subscribe
+      (
+          response =>
+          {
+           //   this.allDatas = response;
+          }
+      )
     }
-
     ngOnDestroy(): void 
     {
     }
