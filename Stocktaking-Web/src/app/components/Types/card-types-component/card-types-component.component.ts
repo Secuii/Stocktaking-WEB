@@ -1,80 +1,71 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Type } from 'src/app/entities/type';
+import { StatusPage } from 'src/app/enums/enum-status-page';
 
 
-@Component({
-  selector: 'app-card-types-component',
-  templateUrl: './card-types-component.component.html',
-  styleUrls: ['./../../components.css']
-})
-export class CardTypesComponentComponent implements OnInit{
+@Component
+(
+    {
+        selector: 'app-card-types-component',
+        templateUrl: './card-types-component.component.html',
+        styleUrls: 
+        [
+            './../../components.css'
+        ]
+    }
+)
+
+export class CardTypesComponentComponent implements OnInit, OnDestroy
+{
+    /*
+        Eventos:
+    */
+    @Output() statusPageEvent = new EventEmitter <StatusPage>();
+
+    /*
+        Variales:
+    */
+    @Input() type? : Type = new Type();
+    public idTypes: number;
+    
+    /*
+    Constructor
+    */
+    constructor
+    (
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    )
+    {
+        this.type= new Type();
+        this.idTypes = 0;
+    }
 
 
-   /*
-     Variales:
- */
-     public type :Type;
-     public idTypes: number;
- /*
-     Constructor
- */
- constructor(private router: Router,
-             private activatedRoute: ActivatedRoute)
- {
-     this.type= new Type();
-     this.idTypes = 0;
- }
+    /*
+        Métodos implementados de interfaces:
+    */
+    ngOnInit(): void 
+    {
 
- 
- /*
-     Métodos implementados de interfaces:
- */
- ngOnInit(): void 
- {
-     this.activatedRoute.params.subscribe
-     (
-         params => 
-         {
-             this.idTypes = params['id'];
-         }
-     );
+    }
 
-     this.getTypesFromIdService();
- }
+    ngOnDestroy(): void 
+    {
 
-/*
-   Métodos de enrutamiento
-*/
+    }
 
-   public mainPageBtn() {
-     this.router.navigateByUrl('/main');
-   }
- 
-   public showUsersBtn() {
-     // Ir a la página de detalle del id
-    // this.router.navigate(['users', id]);
-   }
+    /*
+        Métodos de Estados
+    */
+    public goBackBtn() 
+    {
+        this.changeStatusPage(StatusPage.ReadAll);
+    }
 
-
-
- /*
-     Método getMembershipFromIdService:
-         Entradas: Ninguna (El id lo pilla del this.membership)
-         Objetivo: petición al servicio de supplier a construir por id.
-         Salidas: Booleana. (true: Si se ha conseguido | false: Si no se ha conseguido)
- */
-   private getTypesFromIdService(): void
-   {
-       /*this.membershipService.readAMembership(this.idMembership).subscribe(
-           response => 
-           {
-               this.membership = response;
-           }
-       )*/
-   }
-
-
-
-
+    private changeStatusPage (newStatusPage : StatusPage)
+    {
+        this.statusPageEvent.emit(newStatusPage);
+    }
 }

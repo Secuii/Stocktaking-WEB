@@ -1,115 +1,137 @@
+import { StatusPage } from './../../../enums/enum-status-page';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Type } from 'src/app/entities/type';
+import { MyRoutingService } from 'src/app/services/my.routing.service';
 
 import { TypeService } from 'src/app/services/types.service';
 
 
-@Component({
-  selector: 'app-list-types-component',
-  templateUrl: './list-types-component.component.html',
-  styleUrls: 
-  [
-    './../../components.css'
-  ],
-  providers:
+@Component
+(
+    {
+        selector: 'app-list-types-component',
+        templateUrl: './list-types-component.component.html',
+        styleUrls: 
         [
-            TypeService
+            './../../components.css'
+        ],
+        providers:
+        [
+            TypeService,
+            MyRoutingService
         ]
-})
-export class ListTypesComponentComponent implements OnInit, OnDestroy{
+    }
+)
+export class ListTypesComponentComponent implements OnInit, OnDestroy
+{
+    /*
+        Eventos:
+    */
+    @Output() statusPageEvent = new EventEmitter <StatusPage>();
+    @Output() selectTypeEvent = new EventEmitter <Type>();
 
-
-  /*
+    /*
         Variales:
     */
-        public allDatas: Type[];
+    public allDatas: Array<Type>;
+    
+
     /*
-        Constructor
+    Constructor
     */
     constructor
     (
         private typesService : TypeService,
-        private router: Router
+        private router: Router,
+        private myRouringService : MyRoutingService
     )
     {
-        this.allDatas=[];
+        this.allDatas = new Array<Type>;
     }
 
     ngOnInit(): void 
     {
-        this.typesService.findTypes().subscribe(
+        this.typesService.readAllTypes().subscribe
+        (
             response => 
             {
                 this.allDatas = response;
             }
         )
     }
+
     ngOnDestroy(): void 
     {
     }
+
+
+    /*
+        Métodos de Estados
+    */
+
+    public createTypeBtn() 
+    {
+        this.selectType(new Type());
+        this.changeStatusPage(StatusPage.Create);
+    }
+
+    public showTypeBtn(typeOfList: Type): void
+    {
+        this.selectType(typeOfList);
+        this.changeStatusPage(StatusPage.ReadOne);
+    }
+
+    public updateTypeBtn(typeOfList: Type): void
+    {
+        this.selectType(typeOfList);
+        this.changeStatusPage(StatusPage.Update);
+    }
+
+    public deleteTypeBtn(typeOfList: Type): void
+    {
+        let idOfList : number = typeOfList.id;
+        let responseDelete : DeleteResponse;
+        this.selectType(typeOfList);
+
+        this.typesService.deleteType(idOfList).subscribe
+        (
+            response => 
+            {
+                responseDelete = response;
+                alert (responseDelete.response);
+            }
+        )
+        this.myRouringService.reloadCurrentRoute(this.router);
+    }
+
+    public changeStatusPage (newStatusPage : StatusPage)
+    {
+        this.statusPageEvent.emit(newStatusPage);
+    }
+
+    public selectType (newtypeSelected : Type)
+    {
+        this.selectTypeEvent.emit(newtypeSelected);
+    }
+
+    /*
+        Métodos de orden de los datos
+    */
+    public orderById() : void
+    {
+    }
+
+    public orderByName() : void
+    {
+    }
+
+    public orderByPrice() : void
+    {
+
+    }
+
     
-
-  /*
-      Métodos de enrutamiento
-  */
-
-  public mainPageBtn() {
-    this.router.navigateByUrl('/home');
-  }
-
-  public showMoreBtn(id: number): void
-  {
-      // Ir a la página de detalle del id
-     // this.router.navigate(['card', id]);
-  }
-
-  public showEditBtn() {
-      // Ir a la página de detalle del id
-     // this.router.navigate(['update', id]);
-  }
-
-  public showUsersBtn() {
-    // Ir a la página de detalle del id
-   // this.router.navigate(['products', id]);
-  }
-
-  /*
-      Métodos de orden de los datos
-  */
-  public orderById() : void
-  {
-     /* this.typesService.readAllTypesById().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      ) */
-  }
-
-  public orderByName() : void
-  {
-     /* this.typesService.readAllTypesByName().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      )*/
-  }
-
-  public orderByPrice() : void
-  {
-     /* this.typesService.readAllTypesByEmail().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      )*/
-  }
-
-
-
-
-
 }

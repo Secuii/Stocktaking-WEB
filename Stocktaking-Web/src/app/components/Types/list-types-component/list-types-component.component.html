@@ -1,9 +1,10 @@
-<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+<div class="allBlock boxCenter boxReadAll">
+  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
     <h1 class="justify-content-center  mx-auto d-block">TYPE LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+    <button type="button" class="btn btn-warning " (click)="this.createTypeBtn()">Create Type</button>
 </div>
 
-<table class="table tableUser" >
+<table class="table tableUser boxReadAll" >
     <thead>
       <tr class="trUser">
         <th scope="col" class="" (click)="this.orderById()">Id</th>
@@ -21,14 +22,21 @@
         <td class=""> {{item?.name}} </td>
         <td class=""> {{item?.description}} </td>
         <td class=""> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.showTypeBtn(item)"> 
+              SHOW 
+            </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> USERS </button> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.updateTypeBtn(item)">
+              UPDATE 
+            </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+            <button type="button" class="btn btn-primary btnCommon" (click)="this.deleteTypeBtn(item)"> 
+              DELETE 
+            </button> 
         </td>
       </tr>
     </tbody>
   </table>
+</div>
