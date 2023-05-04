@@ -1,10 +1,10 @@
-<div class="allBlock boxCenter boxReadAll">
-  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">TYPE LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.createTypeBtn()">Create Type</button>
+<div class="">
+  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <div class="justify-content-center tittle tittle mx-auto d-block ">TYPE LIST</div>
+    <button type="button" class="btn btn-outline-dark button1" (click)="this.createTypeBtn()">Create Type</button>
 </div>
 
-<table class="table tableUser boxReadAll" >
+<table class="table1 table tableUser" >
     <thead>
       <tr class="trUser">
         <th scope="col" class="" (click)="this.orderById()">Id</th>
@@ -22,17 +22,17 @@
         <td class=""> {{item?.name}} </td>
         <td class=""> {{item?.description}} </td>
         <td class=""> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showTypeBtn(item)"> 
+            <button type="button" class="btn btn-outline-success btnCommon" (click)="this.showTypeBtn(item)"> 
               SHOW 
             </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.updateTypeBtn(item)">
+            <button type="button" class="btn btn-outline-warning btnCommon" (click)="this.updateTypeBtn(item)">
               UPDATE 
             </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.deleteTypeBtn(item)"> 
+            <button type="button" class="btn btn-link btnCommon" style="color: red" (click)="this.deleteTypeBtn(item)"> 
               DELETE 
             </button> 
         </td>

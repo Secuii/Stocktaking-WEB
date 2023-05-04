@@ -1,36 +1,36 @@
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">TYPES LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.goBackBtn()">Go Back</button>
+    <h1 class="justify-content-center tittle  mx-auto d-block">TYPES LIST</h1>
+    <button type="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
 </div>
 
-<div class="allBlock boxCenter boxUpdate">
+<div class="update">
     <div class="row">
         <div class="col-md-12">
             <form #TypeForm="ngForm" (ngSubmit) = "this.submitSendDatas(TypeForm.value)">
                 <div class="sizeForm"></div>
 
-                <div class="form-group">
-                    <label for="id?" class="" > ID Type </label>
+                <div class="form-group texto">
+                    <label for="id?" class="" ><b>ID Type</b> </label>
                     <br>
                     {{ typeForm.id }}
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="name" class="" > Type Name </label>
+                    <label for="name" class="texto" > Type Name </label>
                     <br>
-                    <input type="text" class="" name="name" id="name" [(ngModel)]="this.typeForm.name" placeholder="Coche / Fruta / Guitarra / etc">
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.typeForm.name" placeholder="Coche / Fruta / Guitarra / etc">
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="description" class="" > Type Description </label>
+                    <label for="description" class="texto" > Type Description </label>
                     <br>
-                    <input type="text" class="" name="description" id="description" [(ngModel)]="this.typeForm.description" placeholder="Coche / Fruta / Guitarra / etc">
+                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="this.typeForm.description" placeholder="Coche / Fruta / Guitarra / etc">
                 </div>
 
                 <br>
 
                 <div class="bosCenter">
-                    <button type="submit" class=""> Send Datas </button>
+                    <button type="submit" class="btn btn-outline-dark"> Send Datas </button>
                 </div>
             </form>
         </div>
