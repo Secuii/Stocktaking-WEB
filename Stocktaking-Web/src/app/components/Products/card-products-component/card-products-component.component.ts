@@ -1,66 +1,72 @@
-import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from './../../../entities/product';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Type } from 'src/app/entities/type';
+import { StatusPage } from 'src/app/enums/enum-status-page';
 
-@Component({
-  selector: 'app-card-products-component',
-  templateUrl: './card-products-component.component.html',
-  styleUrls: ['./../../components.css']
-})
-export class CardProductsComponentComponent implements OnInit {
+
+@Component
+(
+    {
+        selector: 'app-card-products-component',
+        templateUrl: './card-products-component.component.html',
+        styleUrls: 
+        [
+            './../../components.css'
+        ]
+    }
+)
+
+export class CardProductsComponentComponent implements OnInit, OnDestroy
+{
     /*
-     Variales:
- */
-     public products: Product;
-     public idProducts: number;
- /*
-     Constructor
- */
- constructor(private router: Router,
-             private activatedRoute: ActivatedRoute)
- {
-     this.products= new Product();
-     this.idProducts = 0;
- }
+        Eventos:
+    */
+    @Output() statusPageEvent = new EventEmitter <StatusPage>();
 
- 
- /*
-     Métodos implementados de interfaces:
- */
- ngOnInit(): void 
- {
-     this.activatedRoute.params.subscribe
-     (
-         params => 
-         {
-             this.idProducts = params['id'];
-         }
-     );
+    /*
+        Variales:
+    */
+    @Input() product? : Product = new Product();
+    public idProducts: number;
+    
+    /*
+    Constructor
+    */
+    constructor
+    (
+        private router: Router,
+        private activatedRoute: ActivatedRoute
+    )
+    {
+        this.product= new Product();
+        this.idProducts = 0;
+    }
 
-     this.getProductsromIdService();
- }
 
-/*
-   Métodos de enrutamiento
-*/
+    /*
+        Métodos implementados de interfaces:
+    */
+    ngOnInit(): void 
+    {
 
-   public mainPageBtn() {
-     this.router.navigateByUrl('/main');
-   }
+    }
 
-   public showUsersBtn() {
-    // Ir a la página de detalle del id
-   // this.router.navigate(['users', id]);
-  }
+    ngOnDestroy(): void 
+    {
 
-   private getProductsromIdService(): void
-   {
-       /*this.ProductsService.readAProducts(this.idP).subscribe(
-           response => 
-           {
-               this.Products = response;
-           }
-       )*/
-   }
+    }
 
+    /*
+        Métodos de Estados
+    */
+    public goBackBtn() 
+    {
+        this.changeStatusPage(StatusPage.ReadAll);
+    }
+
+    private changeStatusPage (newStatusPage : StatusPage)
+    {
+        this.statusPageEvent.emit(newStatusPage);
+    }
 }

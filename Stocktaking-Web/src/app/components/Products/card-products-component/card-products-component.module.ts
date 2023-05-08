@@ -6,7 +6,7 @@ import { CardProductsComponentComponent } from './card-products-component.compon
 
 @NgModule({
   declarations: [
-    CardProductsComponentComponent
+      CardProductsComponentComponent
   ],
   imports: [
     CommonModule,

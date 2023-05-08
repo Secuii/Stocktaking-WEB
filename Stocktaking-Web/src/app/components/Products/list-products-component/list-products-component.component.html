@@ -1,34 +1,45 @@
-<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-  <h1 class="justify-content-center  mx-auto d-block">PRODUCT LIST</h1>
-  <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+<div class="">
+  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <div class="justify-content-center tittle tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp;PRODUCT LIST</div>
+    <button type="button" class="btn btn-outline-dark button1" (click)="this.createProductBtn()">Create Product</button>
 </div>
-
-<table class="table tableUser" >
-  <thead>
-    <tr class="trUser">
-      <th scope="col" class="" (click)="this.orderById()">Id</th>
-      <th scope="col" class="" (click)="this.orderByName()">Name</th>
-      <th scope="col" class="" (click)="this.orderByStock()">Stock</th>
-      <th scope="col" class="">Show More</th>
-      <th scope="col" class="">Users</th>
-      <th scope="col" class="">Edit</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
-      <td class=""> {{item?.id}} </td>
-      <td class=""> {{item?.name}} </td>
-      <td class=""> {{item?.stock}} </td>
-      <td class=""> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
-      </td>
-      <td class="tdUserNormal"> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> USERS </button> 
-      </td>
-      <td class="tdUserNormal"> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="divtable">
+<table class="table1 table tableUser" >
+    <thead>
+      <tr class="trUser">
+        <th scope="col" class="" (click)="this.orderById()">Id</th>
+        <th scope="col" class="" (click)="this.orderByName()">Name</th>
+        <th scope="col" class="" (click)="this.orderByStock()">Stock</th>
+        <th scope="col" class="" (click)="this.orderByType()">Type</th>
+        <th scope="col" class="">Show More</th>
+        <th scope="col" class="">Users</th>
+        <th scope="col" class="">Edit</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
+        <td class=""> {{item?.id}} </td>
+        <td class=""> {{item?.name}} </td>
+        <td class=""> {{item?.stock}} </td>
+        <td class=""> {{item?.type}} </td>
+        <td class=""> 
+            <button type="button" class="btn btn-outline-success btnCommon" (click)="this.showProductBtn(item)"> 
+              SHOW 
+            </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-outline-warning btnCommon" (click)="this.updateProductBtn(item)">
+              UPDATE 
+            </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-link btnCommon" style="color: red" (click)="this.deleteProductBtn(item)"> 
+              DELETE 
+            </button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
