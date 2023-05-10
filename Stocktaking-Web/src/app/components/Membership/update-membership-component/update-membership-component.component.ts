@@ -1,56 +1,178 @@
-import { Component } from '@angular/core';
+import { Product } from './../../../entities/product';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MembershipForm } from 'src/app/entities-form/membership-form';
 import { Membership } from 'src/app/entities/membership';
+import { StatusPage } from 'src/app/enums/enum-status-page';
+import { MembershipService } from 'src/app/services/membership.service';
+import { MyRoutingService } from 'src/app/services/my.routing.service';
 
-@Component({
-  selector: 'app-update-membership-component',
-  templateUrl: './update-membership-component.component.html',
-  styleUrls: ['./../../components.css']
-})
-export class UpdateMembershipComponentComponent {
+@Component
+(
+    {
+        selector: 'app-update-membership-component',
+        templateUrl: './update-membership-component.component.html',
+        styleUrls: 
+        [
+            './../../components.css'
+        ]
+    }
+)
+export class UpdateMembershipComponentComponent implements OnInit 
+{
+
+  /*
+    Eventos
+  */
+  @Output() statusPageEvent = new EventEmitter <StatusPage>();
+
 
    /*
       Variables:
   */
-      public membership: Membership;
-      public idMembership: number;
-      public membershipAux: Membership;
+    @Input() membership? : Membership = new Membership();
+    //public membership: Membership;
+    public membershipForm : MembershipForm;
+    public workMembership : Membership;
+    //public idMembership: number;
+    //public membershipAux: Membership;
   
       //public listMembershipChecker: ListMembershipChecker;
       
-      public messageCompare: string;
+      //public messageCompare: string;
   
-      public allValid: boolean;
+      //public allValid: boolean;
       /*
-          Costructor:
+          Constructor:
       */
       constructor
       (
           private activatedRoute: ActivatedRoute, 
-          //private membershipService: MembershipService,
+          private membershipService: MembershipService,
+          private myRoutingService : MyRoutingService,
           //private loginCookiesController: LoginCookiesController,
           private router: Router,
           //private checkMembership: CheckMembershipService
       )
       {
-        this.membership= new Membership();
+            this.membershipForm = new MembershipForm();
+            this.workMembership = new Membership();
+        
 
-        this.idMembership = 0;
+        //this.membership= new Membership();
+
+        //this.idMembership = 0;
   
-        this.membershipAux = new Membership();
+        //this.membershipAux = new Membership();
         
         //this.listMembershipChecker = new ListMembershipChecker;
         
-        this.messageCompare = "";
+        //this.messageCompare = "";
 
-        this.allValid = false;
+        //this.allValid = false;
       }
 
-          /*
+    /*
       Métodos implementados de interfaces:
     */
     ngOnInit(): void 
     {
+        if(this.membership != undefined)
+        {
+          if(this.membership.id != -1)
+          {
+            //this.workType = this.type;
+            this.workMembership.id = this.membership.id;
+            this.workMembership.name = this.membership.name;
+            this.workMembership.price = this.membership.price;
+    
+            this.membershipForm.id = this.membership.id;
+          }
+          else
+          {
+          }
+          
+        }
+        this.resetForm();
+      }
+
+
+  /*
+    Métodos de Botones
+  */
+    public goBackBtn()
+    {
+      this.changeStatusPage(StatusPage.ReadAll);
+    }
+  
+    public sendDatasBtn(formData : MembershipForm)
+    {
+  
+    }
+
+
+  /*
+    Métodos de estados
+  */
+    private changeStatusPage (newStatusPage : StatusPage)
+    {
+      this.statusPageEvent.emit(newStatusPage);
+    }
+
+
+  /*
+    Métodos de formulario
+  */
+    public submitSendDatas (membershipForm : MembershipForm)
+    {
+      // Si el ID de Membership = 0 (Por defecto) -> Crear
+      if (this.workMembership.id == -1)
+      {
+        this.membershipService.createMembership(this.membershipForm).subscribe
+        (
+          response => 
+          {
+            alert("Type created");
+          }
+        )
+      }
+      else // Si el ID de Type != 0 (Existe) -> Udate
+      {
+        this.mapperMembership(); // Mapeamos el workMembership(Membership) al formulario(membershipForm)
+        this.membershipService.updateMembership(this.workMembership).subscribe
+        (
+          response => 
+          {
+            alert("Membership modified");
+          }
+        )
+      }
+      this.changeStatusPage(StatusPage.ReadAll);
+      this.myRoutingService.reloadCurrentRoute(this.router);
+    }
+
+    private mapperMembership () : void
+    {
+      this.workMembership.name = this.membershipForm.name;
+      this.workMembership.price = this.membershipForm.price;
+    }
+  
+    public resetForm()
+    {
+      this.membershipForm.name = this.workMembership.name;
+      this.membershipForm.price = this.workMembership.price;
+    }
+
+
+
+
+
+
+
+
+      /*ANTERIOR--------------------------------------------------------------------------------
+      -------------------------------------------------------------------------------------*/
+    /*{
         this.activatedRoute.params.subscribe
         (
             params => 
@@ -60,7 +182,7 @@ export class UpdateMembershipComponentComponent {
         );
 
         this.getMembershipFromIdService();
-    }
+    }*/
 
     /*
         Método getMembershipFromIdService:
@@ -120,6 +242,8 @@ export class UpdateMembershipComponentComponent {
             Objetivo: Pregunta si la oferta del formulario ha cambiado con respecto a la inicial
             Salidas: Booleana. (true: Si se ha conseguido | false: Si no se ha conseguido)
     */
+
+    /*
     private compareMemberships(): boolean
     {
         if
@@ -135,6 +259,7 @@ export class UpdateMembershipComponentComponent {
             return false; // No son iguales
         }
     }
+    */
 
     /*
         Método submitOfferUpdate
@@ -142,6 +267,7 @@ export class UpdateMembershipComponentComponent {
             Objetivo: Enviar al servicio la oferta a actualizar y dar feedback del proceso
             Salidas: Ninguna
     */
+   
     public submitMembershipUpdate(form: Membership) : void
     { 
       /*
@@ -164,9 +290,11 @@ export class UpdateMembershipComponentComponent {
       Métodos de enrutamiento
   */
 
+      /*
+
     public mainPageBtn() {
       this.router.navigateByUrl('/main');
     }
-
+*/
 
 }

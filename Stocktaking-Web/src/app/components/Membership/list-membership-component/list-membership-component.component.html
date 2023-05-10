@@ -1,8 +1,8 @@
 <p>list-membership-component works!</p>
 
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">MEMBERSHIP LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+    <h1 class="justify-content-center  mx-auto d-block"> &nbsp; &nbsp; &nbsp; MEMBERSHIP LIST</h1>
+    <button type="button" class="btn btn-outline-dark button1 " (click)="this.createMembershipBtn()">Create Membership</button>
 </div>
 
 <table class="table tableUser" >
@@ -12,8 +12,8 @@
       <th scope="col" class="" (click)="this.orderByName()">Name</th>
       <th scope="col" class="" (click)="this.orderByPrice()">Price</th>
       <th scope="col" class="">Show More</th>
-      <th scope="col" class="">Users</th>
-      <th scope="col" class="">Edit</th>
+      <th scope="col" class="">Update</th>
+      <th scope="col" class="">Delete</th>
       
     </tr>
   </thead>
@@ -23,13 +23,13 @@
       <td class=""> {{item?.name}} </td>
       <td class=""> {{item?.price}} </td>
       <td class=""> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
+          <button type="button" class="btn btn-outline-success btnCommon" (click)="this.showMembershipBtn(item)"> SHOW </button> 
       </td>
       <td class="tdUserNormal"> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> USERS </button> 
+          <button type="button" class="btn btn-outline-warning btnCommon" (click)="this.updateMembershipBtn(item)"> UPDATE </button> 
       </td>
       <td class="tdUserNormal"> 
-          <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
+          <button type="button" class="btn btn-link btnCommon" style="color: red" (click)="this.deleteMembershipBtn(item)"> DELETE </button> 
       </td>
     </tr>
   </tbody>

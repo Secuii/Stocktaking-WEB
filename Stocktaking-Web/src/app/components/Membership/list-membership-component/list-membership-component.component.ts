@@ -1,7 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Membership } from 'src/app/entities/membership';
+import { StatusPage } from 'src/app/enums/enum-status-page';
 import { MembershipService } from 'src/app/services/membership.service';
+import { MyRoutingService } from 'src/app/services/my.routing.service';
 
 @Component
 (
@@ -14,27 +17,36 @@ import { MembershipService } from 'src/app/services/membership.service';
         ],
         providers:
         [
-            MembershipService
+            MembershipService,
+            MyRoutingService
         ]
     }
 )
 export class ListMembershipComponentComponent implements OnInit, OnDestroy
 {
 
+    /*
+        Eventos:
+    */
+        @Output() statusPageEvent = new EventEmitter <StatusPage>();
+        @Output() selectMembershipEvent = new EventEmitter <Membership>();
+
    /*
         Variales:
     */
-        public allDatas: Membership[];
+        public allDatas: Array<Membership>;
+        //public allDatas: Membership[];
     /*
         Constructor
     */
     constructor
     (
         private membershipService : MembershipService,
-        private router: Router
+        private router: Router,
+        private myRouringService : MyRoutingService
     )
     {
-        this.allDatas=[];
+        this.allDatas = new Array<Membership>;
     }
 
     ngOnInit(): void 
@@ -56,9 +68,56 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
       Métodos de enrutamiento
   */
 
+      public createMembershipBtn() 
+      {
+          this.selectMembership(new Membership());
+          this.changeStatusPage(StatusPage.Create);
+      }
+
+      public showMembershipBtn(membershipOfList: Membership): void
+      {
+          this.selectMembership(membershipOfList);
+          this.changeStatusPage(StatusPage.ReadOne);
+      }
+
+      public updateMembershipBtn(membershipOfList: Membership): void
+      {
+          this.selectMembership(membershipOfList);
+          this.changeStatusPage(StatusPage.Update);
+      }
+
+      public deleteMembershipBtn(membershipOfList: Membership): void
+      {
+          let idOfList : number = membershipOfList.id;
+          let responseDelete : DeleteResponse;
+          this.selectMembership(membershipOfList);
+  
+          this.membershipService.deleteMembership(idOfList).subscribe
+          (
+              response => 
+              {
+                  responseDelete = response;
+                  alert (responseDelete.response);
+              }
+          )
+          this.myRouringService.reloadCurrentRoute(this.router);
+      }
+
+      public changeStatusPage (newStatusPage : StatusPage)
+      {
+          this.statusPageEvent.emit(newStatusPage);
+      }
+      
+      public selectMembership (newMembershipSelected : Membership)
+      {
+          this.selectMembershipEvent.emit(newMembershipSelected);
+      }
+
+      /*
   public mainPageBtn() {
     this.router.navigateByUrl('/home');
   }
+  */
 
   public showMoreBtn(id: number): void
   {

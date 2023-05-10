@@ -16,6 +16,9 @@ import { UpdateMembershipComponentModule } from './update-membership-component/u
     ],
     exports: 
     [
+        CardMembershipComponentModule,
+        ListMembershipComponentModule,
+        UpdateMembershipComponentModule
     ]
   })
   export class MembershipComponentModule { }

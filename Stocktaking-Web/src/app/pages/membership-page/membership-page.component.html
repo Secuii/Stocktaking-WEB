@@ -1,3 +1,24 @@
-<p>membership-page works!</p>
+<div class="">
+    <h2> {{ this.pageTitle }}</h2>
+</div>
 
-<app-list-membership-component></app-list-membership-component>
+<!-- Componente Lista -->
+<app-list-membership-component 
+    *ngIf = "this.statusPage==1" 
+    (selectMembershipEvent) = "selectMembership($event)" 
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-list-membership-component>
+
+<!-- Componente Card -->
+<app-card-membership-component 
+    *ngIf = "this.statusPage==2"
+    [membership] = "this.membershipSelected"
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-card-membership-component>
+
+<!-- Componente Update -->
+<app-update-membership-component 
+    *ngIf="this.statusPage==0 || this.statusPage==3"
+    [membership] = "this.membershipSelected"
+    (statusPageEvent) = changeStatusPage($event)>
+</app-update-membership-component>

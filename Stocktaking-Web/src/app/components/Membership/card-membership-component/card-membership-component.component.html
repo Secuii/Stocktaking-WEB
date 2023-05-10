@@ -1,42 +1,44 @@
-<p>card-membership-component works!</p>
 
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">MEMBERSHIP LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+    <h1 class="justify-content-center tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp; MEMBERSHIP LIST</h1>
+    <button type="button" class="btn btn-outline-dark" (click)="this.goBackBtn()">Go Back</button>
 </div>
 
 
-
-<div class="card divCenter" style="width: 24rem;">
+<div>
     <div class="divFirstCard">
         <label class="labelCard">
-            {{membership.name}} <!-- Data Binding: Recoge del componente. -->
+            <h1>
+                {{membership?.name}} <!-- Data Binding: Recoge del componente. -->
+            </h1>
         </label>
     </div>
-    <div class="card-body divCenter">
-        <table class="tableCard">
+    <div class="divtable">
+        <table class="table">
             <tbody>
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Id </td>
-                    <td class="tdUserNormal"> {{membership.id}} </td>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"> <b><h3>Id</h3></b></td>
+                    <td class="tdUserNormal"> {{membership?.id}} </td>
                 </tr>
 
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Name </td>
-                    <td class="tdUserNormal"> {{membership.name}} </td>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"> <b><h3>Name</h3></b> </td>
+                    <td class="tdUserNormal"> {{membership?.name}} </td>
                 </tr>
 
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Price </td>
-                    <td class="tdUserNormal"> {{membership.price}} </td>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"> <b><h3>Price</h3></b> </td>
+                    <td class="tdUserNormal"> {{membership?.price}} </td>
                 </tr>
-
+<!--
                 <tr class="trUser">
                     <td class="tdCardNormal"> Users </td>
                     <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> Users </button>
                 </tr>
+-->
             </tbody>
         </table>
         
     </div>
-</div>
+
+<div>
