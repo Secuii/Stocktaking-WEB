@@ -1,15 +1,10 @@
 import { Product } from './../../../entities/product';
 import { ProductService } from './../../../services/product.service';
 import { StatusPage } from './../../../enums/enum-status-page';
-
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
-import { Type } from 'src/app/entities/type';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
-
-import { TypeService } from 'src/app/services/types.service';
-
 
 @Component
 (
@@ -33,13 +28,12 @@ export class ListProductsComponentComponent implements OnInit, OnDestroy
         Eventos:
     */
     @Output() statusPageEvent = new EventEmitter <StatusPage>();
-    @Output() selectTypeEvent = new EventEmitter <Product>();
+    @Output() selectProductEvent = new EventEmitter <Product>();
 
     /*
         Variales:
     */
     public allDatas: Array<Product>;
-    selectProductEvent: any;
     
 
     /*

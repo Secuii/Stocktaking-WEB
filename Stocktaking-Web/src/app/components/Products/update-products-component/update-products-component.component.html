@@ -1,1 +1,44 @@
-<p>update-products-component works!</p>
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center tittle  mx-auto d-block"> &nbsp; &nbsp; &nbsp; PRODUCT LIST</h1>
+    <button type="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
+</div>
+
+<div class="update">
+    <div class="row">
+        <div class="col-md-12"> 
+            <form #ProductForm="ngForm" (ngSubmit) ="this.submitSendDatas(ProductForm.value)">
+                <div class="sizeForm"></div>
+
+                <div class="form-group texto">
+                    <label for="id?" class="" ><b>ID Product</b> </label>
+                    <br>
+                    {{ productForm.id }}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto" > Product Name </label>
+                    <br>
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.productForm.name"  placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="description" class="texto" > Product Stock </label>
+                    <br>
+                    <input type="number" class="form-control" name="stock" id="stock" [(ngModel)]="this.productForm.stock" placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+
+                <div class="form-group">
+                    <label for="description" class="texto" > Product Type </label>
+                    <br>
+                    <input type="text" class="form-control" name="type" id="type" [(ngModel)]="this.productForm.type" placeholder="Tipo de producto">
+                </div>
+
+                <br>
+
+                <div class="bosCenter">
+                    <button type="submit" class="btn btn-outline-dark"> Send Datas </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
