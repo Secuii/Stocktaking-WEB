@@ -11,7 +11,7 @@ import { ListClientComponentModule } from 'src/app/components/Clients/list-clien
   ],
   imports: 
   [
-    ListClientComponentModule
+    //ListClientComponentModule
   ],
   exports: 
   [

@@ -1,4 +1,24 @@
-<p>client-page works!</p>
-<!--<app-list-client-component *ngIf="this.pathEnum()"==0></app-list-client-component>
-<app-card-client-component *ngIf="this.pathEnum()"==1></app-card-client-component>
-<app-update-client-component *ngIf="this.pathEnum()"==2></app-update-client-component> -->
+<div class="">
+    <h2> {{ this.pageTittle }}</h2>
+</div>
+
+<!-- Componente Lista -->
+<app-list-client-component 
+    *ngIf = "this.statusPage==1" 
+    (selectClientEvent) = "selectClient($event)" 
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-list-client-component>
+
+<!-- Componente Card -->
+<app-card-client-component 
+    *ngIf = "this.statusPage==2"
+    [client] = "this.clientSelected"
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-card-client-component>
+
+<!-- Componente Update -->
+<app-update-client-component 
+    *ngIf="this.statusPage==0 || this.statusPage==3"
+    [client] = "this.clientSelected"
+    (statusPageEvent) = changeStatusPage($event)>
+</app-update-client-component>

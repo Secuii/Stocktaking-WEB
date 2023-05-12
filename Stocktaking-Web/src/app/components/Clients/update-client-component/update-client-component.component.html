@@ -1,1 +1,50 @@
-<p>update-client-component works!</p>
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center tittle  mx-auto d-block"> &nbsp; &nbsp; &nbsp; CLIENTS UPDATE</h1>
+    <button type="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
+</div>
+
+<div class="update">
+    <div class="row">
+        <div class="col-md-12"> 
+            <form #ClientForm="ngForm" (ngSubmit) = "this.submitSendDatas(ClientForm.value)">
+                <div class="sizeForm"></div>
+
+                <div class="form-group texto">
+                    <label for="id?" class="" ><b>ID Client</b> </label>
+                    <br>
+                    {{ clientForm.id }}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto" > Client Name </label>
+                    <br>
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.clientForm.name" placeholder="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="lastName" class="texto" > Client LastName </label>
+                    <br>
+                    <input type="text" class="form-control" name="lastName" id="lastName" [(ngModel)]="this.clientForm.lastName" placeholder="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="secondLastName" class="texto" > Client Second LastName </label>
+                    <br>
+                    <input type="text" class="form-control" name="secondLastName" id="secondLastName" [(ngModel)]="this.clientForm.secondLastName" placeholder="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="age" class="texto" > Client Age </label>
+                    <br>
+                    <input type="number" class="form-control" name="age" id="age" [(ngModel)]="this.clientForm.age" placeholder="">
+                </div>
+
+                <br>
+
+                <div class="bosCenter">
+                    <button type="submit" class="btn btn-outline-dark"> Send Datas </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

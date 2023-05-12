@@ -28,7 +28,7 @@ export class SupplierPageComponent implements OnInit, OnDestroy
     */
     constructor()
     {
-      this.pageTittle = "Página de Tipos de Productos";
+      this.pageTittle = "Página de Supplier";
       this.statusPage = StatusPage.ReadAll;
       this.supplierSelected = undefined;
     }
