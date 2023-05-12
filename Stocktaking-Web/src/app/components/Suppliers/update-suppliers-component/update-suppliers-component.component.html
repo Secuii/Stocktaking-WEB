@@ -1,106 +1,51 @@
-<p>update-suppliers-component works!</p>
-
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">SUPPLIER UPDATE</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+    <h1 class="justify-content-center tittle  mx-auto d-block"> &nbsp; &nbsp; &nbsp; SUPPLIER UPDATE</h1>
+    <button type="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
 </div>
 
-<!--
-<div class="card divContainer" style="width: 39rem;">
-    
-    <form #OfferUpdateForm="ngForm" (ngSubmit)="this.submitSupplierUpdate(OfferUpdateForm.value)" >
-        <div class="sizeContent50">
-            <div class="divCenter">
-                <h4>Name</h4>
-            </div>
-            
-            <div class="divCenter">
-                <input type="text" class="form-control inputTittle" name="name" id="name" [(ngModel)]="this.supplier.name" value="this.supplier.titulo" (keyup)="this.checkAll()">
-            </div>
-            <div [class.labelGreenCorrect]="this.listSupplierChecker.checkTitulo.checkValid === true" [class.labelRedIncorrect] = "this.listSupplierChecker.checkTitulo.checkValid === false" class="divCenter">
-                <h6>{{this.listSupplierChecker.checkTitulo.message}}</h6>
-            </div>
+<div class="update">
+    <div class="row">
+        <div class="col-md-12"> 
+            <form #SupplierForm="ngForm" (ngSubmit) = "this.submitSendDatas(SupplierForm.value)">
+                <div class="sizeForm"></div>
 
-            
-            <div class="tableCard">
-                <div class="tdModify tdCardNormal"> Id </div>
-                <div class="tdModify tdCardNormal"> 
-                    {{supplier.id}} 
+                <div class="form-group texto">
+                    <label for="id?" class="" ><b>ID Supplier</b> </label>
+                    <br>
+                    {{ supplierForm.id }}
                 </div>
-            </div>
-
-            <br>
-
-            <div class="tableCard">
-
-                <div class="tdModify tdCardNormal"> Name </div>
-                <div class="tdModify tdCardNormal"> 
-                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.supplier.name" value="this.supplier.name" (keyup)="this.checkAll()">
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto" > Supplier Name </label>
+                    <br>
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.supplierForm.name" placeholder="Supplier1 / Supplier2 / etc">
                 </div>
-
-                <div [class.labelGreenCorrect]="this.listSupplierChecker.checkEmpresa.checkValid === true" [class.labelRedIncorrect] = "this.listSupplierChecker.checkEmpresa.checkValid === false" class="divCenter">
-                    <h6>{{this.listSupplierChecker.checkEmpresa.message}}</h6>
+                <br>
+                <div class="form-group">
+                    <label for="email" class="texto" > Supplier Email </label>
+                    <br>
+                    <input type="text" class="form-control" name="email" id="email" [(ngModel)]="this.supplierForm.email" placeholder="">
                 </div>
-            </div>
-
-            <br>
-            
-            <div class="tableCard">
-                
-                <div class="tdModify tdCardNormal"> Email </div>
-                <div class="tdModify tdCardNormal"> 
-                    <input type="text" class="form-control" name="email" id="email" [(ngModel)]="this.supplier.email" value="this.supplier.email" (keyup)="this.checkAll()">
+                <br>
+                <div class="form-group">
+                    <label for="address" class="texto" > Supplier Address </label>
+                    <br>
+                    <input type="text" class="form-control" name="address" id="address" [(ngModel)]="this.supplierForm.address" placeholder="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="description" class="texto" > Supplier Description </label>
+                    <br>
+                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="this.supplierForm.description" placeholder="">
                 </div>
 
+                <br>
 
-                <div [class.labelGreenCorrect]="this.listSupplierChecker.checkSalario.checkValid === true" [class.labelRedIncorrect] = "this.listSupplierChecker.checkSalario.checkValid === false" class="divCenter">
-                    <h6>{{this.listSupplierChecker.checkSalario.message}}</h6>
+                <div class="bosCenter">
+                    <button type="submit" class="btn btn-outline-dark"> Send Datas </button>
                 </div>
-            </div>
-
-            <br>
-            
-            <div class="tableCard">
-                <div class="tdModify tdCardNormal"> Address </div>
-                <div class="tdModify tdCardNormal"> 
-                    <input type="text" class="form-control" name="address" id="address" [(ngModel)]="this.supplier.address" (keyup)="this.checkAll()">
-                </div>
-            
-
-                <div [class.labelGreenCorrect]="this.listSupplierChecker.checkCiudad.checkValid === true" [class.labelRedIncorrect] = "this.listSupplierChecker.checkCiudad.checkValid === false" class="divCenter">
-                    <h6>{{this.listSupplierChecker.checkCiudad.message}}</h6>
-                </div>
-            </div>
-
-            <br>
-            
-            <div class="tableCard">
-                <div class="tdModify tdCardNormal"> Description </div>
-                <div class="tdModify tdCardNormal"> 
-                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="this.supplier.description" (keyup)="this.checkAll()">
-                </div>
-
-
-                <div [class.labelGreenCorrect]="this.listSupplierChecker.checkEmail.checkValid === true" [class.labelRedIncorrect] = "this.listSupplierChecker.checkEmail.checkValid === false" class="divCenter">
-                    <h6>{{this.listSupplierChecker.checkEmail.message}}</h6>
-                </div>
-            </div>
-
-            <br>
-
-            <br>
-            
-            <div>
-                <div [class.labelGreenCorrect]="this.allValid === true" [class.labelRedIncorrect] = "this.allValid === false" class="divContainer">
-                    <h6>{{this.messageCompare}}</h6>
-                </div>
-
-                <div class="divCenter">
-                    <button type="submit" class="btn btn-primary btnCommon" [disabled]="!this.allValid"> Update </button> 
-                </div>
-            </div>
-           
+            </form>
         </div>
-    </form>
+    </div>
 </div>
--->
+

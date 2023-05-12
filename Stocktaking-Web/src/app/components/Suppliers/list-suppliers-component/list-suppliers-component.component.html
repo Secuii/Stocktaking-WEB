@@ -1,11 +1,10 @@
-<p>list-suppliers-component works!</p>
-
-<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">SUPPLIERS LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+<div class="">
+  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <div class="justify-content-center tittle tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp;SUPPLIERS LIST</div>
+    <button type="button" class="btn btn-outline-dark button1" (click)="this.createSupplierBtn()">Create Supplier</button>
 </div>
-
-<table class="table tableUser" >
+<div class="divtable">
+<table class="table1 table tableUser" >
     <thead>
       <tr class="trUser">
         <th scope="col" class="" (click)="this.orderById()">Id</th>
@@ -14,8 +13,8 @@
         <th scope="col" class="" (click)="this.orderByAddress()">Address</th>
         <th scope="col" class="" (click)="this.orderByDescription()">Description</th>
         <th scope="col" class="">Show More</th>
-        <th scope="col" class="">Products</th>
-        <th scope="col" class="">Edit</th>
+        <th scope="col" class="">Update</th>
+        <th scope="col" class="">Delete</th>
         
       </tr>
     </thead>
@@ -27,17 +26,22 @@
         <td class=""> {{item.address}} </td>
         <td class=""> {{item.description}} </td>
         <td class=""> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showMoreBtn(item.id)"> SHOW MORE </button> 
+            <button type="button" class="btn btn-outline-success btnCommon" (click)="this.showSupplierBtn(item)"> 
+              SHOW 
+            </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showProductsBtn()"> PRODUCTS </button> 
+            <button type="button" class="btn btn-outline-warning btnCommon" (click)="this.updateSupplierBtn(item)">
+              UPDATE 
+            </button> 
         </td>
         <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.showEditBtn()"> EDIT </button> 
-        </td>
-        <td class="tdUserNormal"> 
-            <button type="button" class="btn btn-primary btnCommon" (click)="this.deleteBtn(item.id)"> ELIMINAR </button> 
+            <button type="button" class="btn btn-link btnCommon" style="color: red" (click)="this.deleteSupplierBtn(item)"> 
+              DELETE 
+            </button> 
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+</div>
