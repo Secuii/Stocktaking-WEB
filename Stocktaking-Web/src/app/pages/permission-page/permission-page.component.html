@@ -1,3 +1,18 @@
-<p>permission-page works!</p>
+<div class="">
+    <h2> {{ this.pageTittle }}</h2>
+</div>
 
-<app-list-permission-component></app-list-permission-component>
+<!-- Componente Lista -->
+<app-list-permission-component *ngIf="this.statusPage==1" (selectPermissionEvent)="selectPermission($event)"
+    (statusPageEvent)="changeStatusPage($event)">
+</app-list-permission-component>
+
+<!-- Componente Card -->
+<app-card-permission-component *ngIf="this.statusPage==2" [permission]="this.permissionSelected"
+    (statusPageEvent)="changeStatusPage($event)">
+</app-card-permission-component>
+
+<!-- Componente Update -->
+<app-update-permission-component *ngIf="this.statusPage==0 || this.statusPage==3" [permission]="this.permissionSelected"
+    (statusPageEvent)=changeStatusPage($event)>
+</app-update-permission-component>
