@@ -1,104 +1,122 @@
-import { Permission } from './../../../entities/permission';
-import { PermissionService } from './../../../services/permissions.service';
+import { StatusPage } from './../../../enums/enum-status-page';
+
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DeleteResponse } from 'src/app/entities-response/delete-response';
+import { Permission } from 'src/app/entities/permission';
+import { MyRoutingService } from 'src/app/services/my.routing.service';
 
-@Component({
-  selector: 'app-list-permission-component',
-  templateUrl: './list-permission-component.component.html',
-  styleUrls: ['./../../components.css'],
-  providers: [PermissionService, Router]
-})
-export class ListPermissionComponentComponent implements OnInit, OnDestroy
-{
+import { PermissionService } from 'src/app/services/permissions.service';
 
-   /*
+
+@Component
+    (
+        {
+            selector: 'app-list-permission-component',
+            templateUrl: './list-permission-component.component.html',
+            styleUrls:
+                [
+                    './../../components.css'
+                ],
+            providers:
+                [
+                    PermissionService,
+                    MyRoutingService
+                ]
+        }
+    )
+export class ListPermissionComponentComponent implements OnInit, OnDestroy {
+    /*
+        Eventos:
+    */
+    @Output() statusPageEvent = new EventEmitter<StatusPage>();
+    @Output() selectPermissionEvent = new EventEmitter<Permission>();
+
+    /*
         Variales:
     */
-        public allDatas: Permission[];
+    public allDatas: Array<Permission>;
+
+
     /*
-        Constructor
+    Constructor
     */
     constructor
-    (
-        private permissionService : PermissionService,
-        private router: Router
-    )
-    {
-        this.allDatas=[];
+        (
+            private permissionService: PermissionService,
+            private router: Router,
+            private myRouringService: MyRoutingService
+        ) {
+        this.allDatas = new Array<Permission>;
     }
 
-    ngOnInit(): void 
-    {
-      this.permissionService.findPermissions().subscribe
-      (
-          response =>
-          {
-              this.allDatas = response;
-          }
-      )
+    ngOnInit(): void {
+        this.permissionService.readAllPermissions().subscribe
+            (
+                response => {
+                    this.allDatas = response;
+                }
+            )
     }
-    ngOnDestroy(): void 
-    {
+
+    ngOnDestroy(): void {
     }
-    
 
-  /*
-      Métodos de enrutamiento
-  */
 
-  public mainPageBtn() {
-    this.router.navigateByUrl('/home');
-  }
+    /*
+        Métodos de Estados
+    */
 
-  public showMoreBtn(id: number): void
-  {
-      // Ir a la página de detalle del id
-     // this.router.navigate(['card', id]);
-  }
+    public createPermissionBtn() {
+        this.selectPermission(new Permission());
+        this.changeStatusPage(StatusPage.Create);
+    }
 
-  public showEditBtn() {
-      // Ir a la página de detalle del id
-     // this.router.navigate(['update', id]);
-  }
+    public showPermissionBtn(permissionOfList: Permission): void {
+        this.selectPermission(permissionOfList);
+        this.changeStatusPage(StatusPage.ReadOne);
+    }
 
-  public showUsersBtn() {
-    // Ir a la página de detalle del id
-   // this.router.navigate(['products', id]);
-  }
+    public updatePermissionBtn(permissionOfList: Permission): void {
+        this.selectPermission(permissionOfList);
+        this.changeStatusPage(StatusPage.Update);
+    }
 
-  /*
-      Métodos de orden de los datos
-  */
-  public orderById() : void
-  {
-     /* this.permissionsService.readAllPermissionsById().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      ) */
-  }
+    public deletePermissionBtn(permissionOfList: Permission): void {
+        let idOfList: number = permissionOfList.id;
+        let responseDelete: DeleteResponse;
+        this.selectPermission(permissionOfList);
 
-  public orderByName() : void
-  {
-     /* this.permissionsService.readAllPermissionsByName().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      )*/
-  }
+        this.permissionService.deletePermission(idOfList).subscribe
+            (
+                response => {
+                    responseDelete = response;
+                    alert(responseDelete.response);
+                }
+            )
+        this.myRouringService.reloadCurrentRoute(this.router);
+    }
 
-  public orderByDescription() : void
-  {
-     /* this.permissionsService.readAllPermissionsByEmail().subscribe(
-          response => 
-          {
-              this.allDatas = response;
-          }
-      )*/
-  }
+    public changeStatusPage(newStatusPage: StatusPage) {
+        this.statusPageEvent.emit(newStatusPage);
+    }
+
+    public selectPermission(newpermissionelected: Permission) {
+        this.selectPermissionEvent.emit(newpermissionelected);
+    }
+
+    /*
+        Métodos de orden de los datos
+    */
+    public orderById(): void {
+    }
+
+    public orderByName(): void {
+    }
+
+    public orderByPrice(): void {
+
+    }
 
 
 }

@@ -1,42 +1,43 @@
-<p>card-permission-component works!</p>
-
-<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
-    <h1 class="justify-content-center  mx-auto d-block">PERMISSIONS LIST</h1>
-    <button type="button" class="btn btn-warning " (click)="this.mainPageBtn()">MAIN PAGE</button>
+<div class="container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <h1 class="justify-content-center tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp; PERMISSIONS LIST</h1>
+    <button permission="button" class="btn btn-outline-dark" (click)="this.goBackBtn()">
+        Go Back
+    </button>
 </div>
 
-
-
-<div class="card divCenter" style="width: 24rem;">
+<div>
     <div class="divFirstCard">
         <label class="labelCard">
-            {{permissions.name}} <!-- Data Binding: Recoge del componente. -->
+            <h1>
+                {{ permission?.name }}
+                <!-- Data Binding: Recoge del componente. -->
+            </h1>
         </label>
     </div>
-    <div class="card-body divCenter">
-        <table class="tableCard">
+    <div class="divtable">
+        <table class="table">
             <tbody>
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Id </td>
-                    <td class="tdUserNormal"> {{permissions.id}} </td>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Id</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ permission?.id }}</td>
                 </tr>
 
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Name </td>
-                    <td class="tdUserNormal"> {{permissions.name}} </td>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Name</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ permission?.name }}</td>
                 </tr>
 
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Description </td>
-                    <td class="tdUserNormal"> {{permissions.description}} </td>
-                </tr>
-
-                <tr class="trUser">
-                    <td class="tdCardNormal"> Users </td>
-                    <button type="button" class="btn btn-primary btnCommon" (click)="this.showUsersBtn()"> Users </button>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Descripcion</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ permission?.description }}</td>
                 </tr>
             </tbody>
         </table>
-        
     </div>
 </div>
