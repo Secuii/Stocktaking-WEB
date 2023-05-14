@@ -1,13 +1,11 @@
-export class Attribute 
-{
+export class Attribute {
     public id: number;
-    public name: string;
-    public description: string;
-    
-    constructor ()
-    {
-        this.id=-1;
-        this.name="";
+    public name: String;
+    public description: String;
+
+    constructor() {
+        this.id = -1;
+        this.name = "";
         this.description = "";
     }
 }
