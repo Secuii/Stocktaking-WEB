@@ -1,58 +1,118 @@
-import { Permission } from './../entities/permission';
 import { Observable } from 'rxjs';
-import { PathsUser } from './../PathsApi/PathsUser';
+import { PathsUser } from '../PathsApi/PathsUser';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Permission } from '../entities/permission';
+import { PermissionForm } from '../entities-form/permission-form';
+import { MyHttpService } from './my-http-service';
+import { DeleteResponse } from '../entities-response/delete-response';
+
+
 
 @Injectable()
-export class PermissionService 
-{
-
+export class PermissionService extends MyHttpService {
+  /*
+    Variables
+  */
   private _baseUrl: string;
   private _permission: string;
   private _permissions: string;
 
-  constructor(private http: HttpClient) 
-  {
-    
-    this._baseUrl = PathsUser.PATH_SERVER;
+  /*
+    Constructor
+  */
+  constructor
+    (
+      private http: HttpClient
+    ) {
+    super();
+    this._baseUrl = PathsUser.PERMISSION;
     this._permission = PathsUser.PERMISSION;
     this._permissions = PathsUser.PERMISSIONS;
   }
 
 
-  findPermissions(): Observable<Permission[]>
-  {
+  findPermissions(): Observable<Permission[]> {
     var url: string = this._baseUrl + this._permissions
     return this.http.get<Permission[]>(url);
   }
 
-  getPermissionById(id: number): Observable<Permission> 
-  {
-    var url: string = this._baseUrl+ this._permission + '?id=' + id
-    return this.http.get<Permission>(url);
-  }
-  
-  deletePermission(id: number): Observable<Permission> 
-  {
-    var url: string = this._baseUrl+ this._permission + '?id=' + id
-    return this.http.delete<Permission>(url);
-  }
 
 
-  addPermission(newPermission: Permission): Observable<Permission> 
-  {
-    var url: string = this._baseUrl+ this._permission
-    //return this.http.post<NewMembership>(url, newMembership, {headers: this.headers});
-    return this.http.post<Permission>(url, newPermission);
-  }
-
-    /*
-  get headers() {
-    return new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-  }
+  /*
+    Método (Crud -> Create) Crear permission
+    Objetivo:
+    Entrada:
+    Salida
   */
-  
+  createPermission(newPermission: PermissionForm): Observable<Permission> {
+    const header = this.createHeader();
+    var url: string = this._baseUrl + this._permission
+
+    //return this.http.post<Permission>(url, newPermission);
+    console.log(newPermission);
+    return this.http.post<Permission>(url, newPermission, header);
+  }
+
+  /*
+    Método (cRud -> Read) Leer todos los permissions
+    Objetivo:
+    Entrada:
+    Salida
+  */
+  readAllPermissions(): Observable<Permission[]> {
+    const header = this.createHeader();
+    var url: string = this._baseUrl + this._permissions
+    return this.http.get<Permission[]>(url, header);
+  }
+
+  /*
+    Método (cRud -> Read) Leer permission
+    Objetivo:
+    Entrada:
+    Salida
+  */
+  readPermission(id: number): Observable<Permission> {
+    const header = this.createHeader();
+    var url: string = this._baseUrl + this._permission + '?id=' + id
+    return this.http.get<Permission>(url, header);
+  }
+
+  /*
+    Método (crUd -> Update) Modificar permission
+    Objetivo:
+    Entrada:
+    Salida
+  */
+  updatePermission(changePermission: Permission): Observable<Permission> {
+    const header = this.createHeader();
+    var url: string = this._baseUrl + this._permission
+    //return this.http.post<NewPermission>(url, newPermission, {headers: this.headers});
+    console.log(changePermission);
+    return this.http.put<Permission>(url, changePermission);
+  }
+
+  /*
+    Método (cruD -> Delete) Borrar permission
+    Objetivo:
+    Entrada:
+    Salida
+  */
+  deletePermission(id: number): Observable<DeleteResponse> {
+    const header = this.createHeader();
+
+    var url: string = this._baseUrl + this._permission + '?id=' + id
+
+    return this.http.delete<DeleteResponse>(url, header);
+  }
+
+
+
+  /*
+get headers() {
+  return new HttpHeaders()
+  .set('Content-Permission', 'application/json')
+  .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+}*/
+
 }
