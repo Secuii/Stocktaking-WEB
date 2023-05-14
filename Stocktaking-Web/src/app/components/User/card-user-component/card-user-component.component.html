@@ -1,1 +1,69 @@
-<p>card-user-component works!</p>
+<div class="container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <h1 class="justify-content-center tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp; USER LIST</h1>
+    <button type="button" class="btn btn-outline-dark" (click)="this.goBackBtn()">
+        Go Back
+    </button>
+</div>
+
+<div>
+    <div class="divFirstCard">
+        <label class="labelCard">
+            <h1>
+                {{ user?.name }}
+                <!-- Data Binding: Recoge del componente. -->
+            </h1>
+        </label>
+    </div>
+    <div class="divtable">
+        <table class="table">
+            <tbody>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Id</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.id }}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Name</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.name }}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Last Name</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.lastName }}</td>
+                </tr>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Email</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.email}}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Age</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.age }}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Password</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.password }}</td>
+                </tr>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Membership</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ user?.membership }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

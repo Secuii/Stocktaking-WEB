@@ -1,1 +1,67 @@
-<p>update-user-component works!</p>
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center tittle  mx-auto d-block"> &nbsp; &nbsp; &nbsp; USERS LIST</h1>
+    <button user="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
+</div>
+
+<div class="update">
+    <div class="row">
+        <div class="col-md-12">
+            <form #UserForm="ngForm" (ngSubmit)="this.submitSendDatas(UserForm.value)">
+                <div class="sizeForm"></div>
+
+                <div class="form-group texto">
+                    <label for="id?" class=""><b>ID User</b> </label>
+                    <br>
+                    {{ userForm.id }}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto"> User Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="name" id="name" [(ngModel)]="this.userForm.name"
+                        placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="lastName" class="texto"> User Last Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="lastName" id="lastName"
+                        [(ngModel)]="this.userForm.lastName" placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="email" class="email"> Email </label>
+                    <br>
+                    <input user="text" class="form-control" name="email" id="email" [(ngModel)]="this.userForm.email"
+                        placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="age" class="text"> Age </label>
+                    <br>
+                    <input user="number" class="form-control" name="age" id="age" [(ngModel)]="this.userForm.age"
+                        placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password" class="texto"> Password </label>
+                    <br>
+                    <input user="text" class="form-control" name="password" id="password"
+                        [(ngModel)]="this.userForm.password" placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="membership" class="texto"> Membership </label>
+                    <br>
+                    <input user="text" class="form-control" name="membership" id="membership"
+                        [(ngModel)]="this.userForm.membership" placeholder="Coche / Fruta / Guitarra / etc">
+                </div>
+                <br>
+
+                <div class="bosCenter">
+                    <button user="submit" class="btn btn-outline-dark"> Send Datas </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
