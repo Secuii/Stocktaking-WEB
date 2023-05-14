@@ -1,1 +1,43 @@
-<p>card-attributes-component works!</p>
+<div class="container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <h1 class="justify-content-center tittle mx-auto d-block "> &nbsp; &nbsp; &nbsp; ATTRIBUTES LIST</h1>
+    <button attributes="button" class="btn btn-outline-dark" (click)="this.goBackBtn()">
+        Go Back
+    </button>
+</div>
+
+<div>
+    <div class="divFirstCard">
+        <label class="labelCard">
+            <h1>
+                {{ attributes?.name }}
+                <!-- Data Binding: Recoge del componente. -->
+            </h1>
+        </label>
+    </div>
+    <div class="divtable">
+        <table class="table">
+            <tbody>
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Id</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ attributes?.id }}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Name</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ attributes?.name }}</td>
+                </tr>
+
+                <tr class="trUser2">
+                    <td class="tdCardNormal"><b>
+                            <h3>Descripcion</h3>
+                        </b></td>
+                    <td class="tdUserNormal">{{ attributes?.description }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
