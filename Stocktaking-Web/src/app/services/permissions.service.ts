@@ -26,7 +26,7 @@ export class PermissionService extends MyHttpService {
       private http: HttpClient
     ) {
     super();
-    this._baseUrl = PathsUser.PERMISSION;
+    this._baseUrl = PathsUser.PATH_SERVER;
     this._permission = PathsUser.PERMISSION;
     this._permissions = PathsUser.PERMISSIONS;
   }

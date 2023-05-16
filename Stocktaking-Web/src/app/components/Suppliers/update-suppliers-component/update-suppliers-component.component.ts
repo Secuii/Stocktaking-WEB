@@ -64,6 +64,8 @@ export class UpdateSuppliersComponentComponent  implements OnInit, OnDestroy
           //this.workSupplier = this.supplier;
           this.workSupplier.id = this.supplier.id;
           this.workSupplier.name = this.supplier.name;
+          this.workSupplier.email = this.supplier.email;
+          this.workSupplier.address = this.supplier.address;
           this.workSupplier.description = this.supplier.description;
   
           this.supplierForm.id = this.supplier.id;
@@ -136,12 +138,16 @@ export class UpdateSuppliersComponentComponent  implements OnInit, OnDestroy
     private mapperSupplier () : void
     {
       this.workSupplier.name = this.supplierForm.name;
+      this.workSupplier.email = this.supplierForm.email;
+      this.workSupplier.address = this.supplierForm.address;
       this.workSupplier.description = this.supplierForm.description;
     }
   
     public resetForm()
     {
       this.supplierForm.name = this.workSupplier.name;
+      this.supplierForm.email = this.workSupplier.email;
+      this.supplierForm.address = this.workSupplier.address;
       this.supplierForm.description = this.workSupplier.description;
     }
   

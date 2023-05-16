@@ -15,7 +15,12 @@ import { MyRoutingService } from 'src/app/services/my.routing.service';
         styleUrls: 
         [
             './../../components.css'
-        ]
+        ],
+        providers:
+          [
+            MembershipService,
+            MyRoutingService
+          ]
     }
 )
 export class UpdateMembershipComponentComponent implements OnInit 

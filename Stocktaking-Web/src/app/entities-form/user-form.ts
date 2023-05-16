@@ -1,7 +1,7 @@
 import { Membership } from "../entities/membership";
 
 export class UserForm {
-    public id: number;
+    public id?: number;
     public name: string;
     public lastName: string;
     public email: string;
@@ -10,7 +10,7 @@ export class UserForm {
     public membership: Membership;
 
     constructor() {
-        this.id = -1;
+        this.id = undefined;
         this.name = "";
         this.lastName = "";
         this.email = "";

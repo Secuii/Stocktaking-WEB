@@ -11,7 +11,12 @@ import { MyRoutingService } from 'src/app/services/my.routing.service';
   {
     selector: 'app-list-client-component',
     templateUrl: './list-client-component.component.html',
-    styleUrls: ['./../../components.css']
+    styleUrls: ['./../../components.css'],
+    providers:
+    [
+        ClientService,
+        MyRoutingService
+    ]
   }
 )
 export class ListClientComponentComponent implements OnInit, OnDestroy
