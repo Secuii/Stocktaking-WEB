@@ -28,6 +28,14 @@
                     <input user="text" class="form-control" name="lastName" id="lastName"
                         [(ngModel)]="this.userForm.lastName" placeholder="Apellido">
                 </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="texto"> User Second Last Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="secondLastName" id="secondLastName"
+                        [(ngModel)]="this.userForm.secondLastName" placeholder="segundo Apellido">
+                </div>
+
                 <br>
                 <div class="form-group texto">
                     <label for="email" class="email"> Email </label>
@@ -53,8 +61,10 @@
                 <div class="form-group">
                     <label for="membership" class="texto"> Membership </label>
                     <br>
-                    <input user="text" class="form-control" name="membership" id="membership"
-                        [(ngModel)]="this.userForm.membership" >
+                    <select [(ngModel)]="this.userForm.membership" name="workUser.membership" (change)="changeMembershipSelection()">
+                        <option *ngFor="let membership of listMemberships" [ngValue]="membership">{{ membership.name }}</option>
+                    </select>
+                      
                 </div>
                 <br>
 

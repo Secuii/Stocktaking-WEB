@@ -2,7 +2,7 @@ import { StatusPage } from './../../../enums/enum-status-page';
 
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { DeleteResponse } from 'src/app/entities-response/delete-response';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 import { Permission } from 'src/app/entities/permission';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
 
@@ -35,26 +35,30 @@ export class ListPermissionComponentComponent implements OnInit, OnDestroy {
     /*
         Variales:
     */
-    public allDatas: Array<Permission>;
-
+    public allDatas:ApiResponse<Permission[]> | undefined;
+    public allEntities : Array<Permission> | undefined;
 
     /*
     Constructor
     */
     constructor
-        (
-            private permissionService: PermissionService,
-            private router: Router,
-            private myRouringService: MyRoutingService
-        ) {
-        this.allDatas = new Array<Permission>;
+    (
+        private permissionService: PermissionService,
+        private router: Router,
+        private myRouringService: MyRoutingService
+    ) 
+    {
+        this.allDatas = new ApiResponse<Permission[]>;
+        this.allEntities = new Array<Permission>
     }
 
     ngOnInit(): void {
         this.permissionService.readAllPermissions().subscribe
             (
-                response => {
+                response => 
+                {
                     this.allDatas = response;
+                    this.allEntities = this.allDatas.response;
                 }
             )
     }
@@ -84,7 +88,7 @@ export class ListPermissionComponentComponent implements OnInit, OnDestroy {
 
     public deletePermissionBtn(permissionOfList: Permission): void {
         let idOfList: number = permissionOfList.id;
-        let responseDelete: DeleteResponse;
+        let responseDelete: ApiResponse<Permission>;
         this.selectPermission(permissionOfList);
 
         this.permissionService.deletePermission(idOfList).subscribe

@@ -37,22 +37,24 @@ export class CardUserComponentComponent {
   /*
       Métodos implementados de interfaces:
   */
-  ngOnInit(): void {
-
+  ngOnInit(): void 
+  {
   }
 
-  ngOnDestroy(): void {
-
+  ngOnDestroy(): void 
+  {
   }
 
   /*
       Métodos de Estados
   */
-  public goBackBtn() {
+  public goBackBtn() 
+  {
     this.changeStatusPage(StatusPage.ReadAll);
   }
 
-  private changeStatusPage(newStatusPage: StatusPage) {
+  private changeStatusPage(newStatusPage: StatusPage) 
+  {
     this.statusPageEvent.emit(newStatusPage);
   }
 

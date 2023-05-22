@@ -6,6 +6,7 @@ import { Type } from '../entities/type';
 import { TypeForm } from '../entities-form/type-form';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 
 
@@ -30,7 +31,7 @@ export class TypeService extends MyHttpService
     super();  
     this._baseUrl = PathsApi.PATH_SERVER;
     this._type = PathsApi.TYPE;
-    this._types = PathsApi.TYPES;
+    this._types = PathsApi.ALL_TYPES;
   }
 
   /*
@@ -39,14 +40,14 @@ export class TypeService extends MyHttpService
     Entrada:
     Salida
   */
-  createType(newType: TypeForm): Observable<Type> 
+  createType(newType: TypeForm): Observable<ApiResponse<Type>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._type
     
     //return this.http.post<Type>(url, newType);
     console.log(newType);
-    return this.http.post<Type>(url, newType, header);
+    return this.http.post<ApiResponse<Type>>(url, newType, header);
   }
 
   /*
@@ -55,11 +56,11 @@ export class TypeService extends MyHttpService
     Entrada:
     Salida
   */
-  readAllTypes(): Observable<Type[]>
+  readAllTypes(): Observable<ApiResponse<Type[]>>
   {
     const header = this.createHeader();
     var url: string = this._baseUrl + this._types
-    return this.http.get<Type[]> (url, header);
+    return this.http.get<ApiResponse<Type[]>> (url, header);
   }
 
   /*
@@ -68,11 +69,11 @@ export class TypeService extends MyHttpService
     Entrada:
     Salida
   */
-  readType(id: number): Observable<Type> 
+  readType(id: number): Observable<ApiResponse<Type>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._type + '?id=' + id
-    return this.http.get<Type>(url, header);
+    return this.http.get<ApiResponse<Type>>(url, header);
   }
   
   /*
@@ -81,13 +82,13 @@ export class TypeService extends MyHttpService
     Entrada:
     Salida
   */
-  updateType(changeType: Type): Observable<Type> 
+  updateType(changeType: Type): Observable<ApiResponse<Type>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._type
     //return this.http.post<NewType>(url, newType, {headers: this.headers});
     console.log(changeType);
-    return this.http.put<Type>(url, changeType);
+    return this.http.put<ApiResponse<Type>>(url, changeType);
   }
 
   /*
@@ -96,22 +97,13 @@ export class TypeService extends MyHttpService
     Entrada:
     Salida
   */
-  deleteType(id: number): Observable<DeleteResponse> 
+  deleteType(id: number): Observable<ApiResponse<Type>> 
   {
     const header = this.createHeader();
     
     var url: string = this._baseUrl+ this._type + '?id=' + id
     
-    return this.http.delete<DeleteResponse>(url, header);
+    return this.http.delete<ApiResponse<Type>>(url, header);
   }
-
-  
-
-    /*
-  get headers() {
-    return new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-  }*/
   
 }

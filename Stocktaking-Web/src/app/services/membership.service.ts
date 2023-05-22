@@ -3,11 +3,10 @@ import { PathsUser } from './../PathsApi/PathsUser';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Membership } from '../entities/membership';
-import { NewMembership } from '../entities/membership_interface';
-import { PathsApi } from '../PathsApi/PathsApi';
 import { MembershipForm } from '../entities-form/membership-form';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 @Injectable()
 export class MembershipService  extends MyHttpService
@@ -25,7 +24,7 @@ export class MembershipService  extends MyHttpService
     super();
     this._baseUrl = PathsUser.PATH_SERVER;
     this._membership = PathsUser.MEMBERSHIP;
-    this._memberships = PathsUser.MEMBERSHIPS;
+    this._memberships = PathsUser.ALL_MEMBERSHIPS;
   }
 
    /*
@@ -34,68 +33,46 @@ export class MembershipService  extends MyHttpService
     Entrada:
     Salida
   */
-  createMembership(newMembership: MembershipForm): Observable<Membership> 
+  createMembership(newMembership: MembershipForm): Observable<ApiResponse<Membership>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._membership
     
     //return this.http.post<Type>(url, newType);
     console.log(newMembership);
-    return this.http.post<Membership>(url, newMembership, header);
+    return this.http.post<ApiResponse<Membership>>(url, newMembership, header);
   }
 
-  updateMembership(changeMembership : Membership): Observable<Membership> 
+  updateMembership(changeMembership : Membership): Observable<ApiResponse<Membership>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._membership
     //return this.http.post<NewType>(url, newType, {headers: this.headers});
     console.log(changeMembership);
-    return this.http.put<Membership>(url, changeMembership);
+    return this.http.put<ApiResponse<Membership>>(url, changeMembership);
   }
 
-  deleteMembership(id: number): Observable<DeleteResponse> 
+  deleteMembership(id: number): Observable<ApiResponse<Membership>> 
   {
     const header = this.createHeader();
     
     var url: string = this._baseUrl+ this._membership + '?id=' + id
     
-    return this.http.delete<DeleteResponse>(url, header);
+    return this.http.delete<ApiResponse<Membership>>(url, header);
   }
 
 
-  findMemberships(): Observable<Membership[]>
+  readAllMemberships(): Observable<ApiResponse<Membership[]>>
   {
+    const header = this.createHeader();
     var url: string = this._baseUrl + this._memberships
-    return this.http.get<Membership[]>(url);
+    return this.http.get<ApiResponse<Membership[]>>(url, header);
   }
 
-  getMembershipById(id: number): Observable<Membership> 
+  readMembershipById(id: number): Observable<ApiResponse<Membership>> 
   {
     var url: string = this._baseUrl+ this._membership + '?id=' + id
-    return this.http.get<Membership>(url);
+    return this.http.get<ApiResponse<Membership>>(url);
   }
-  
-  /*
-  deleteMembership(id: number): Observable<Membership> 
-  {
-    var url: string = this._baseUrl+ this._membership + '?id=' + id
-    return this.http.delete<Membership>(url);
-  }
-*/
-/*
-  addMembership(newMembership: NewMembership): Observable<NewMembership> 
-  {
-    var url: string = this._baseUrl+ this._membership
-    //return this.http.post<NewMembership>(url, newMembership, {headers: this.headers});
-    return this.http.post<NewMembership>(url, newMembership);
-  }
-*/
-    /*
-  get headers() {
-    return new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-  }
-  */
   
 }

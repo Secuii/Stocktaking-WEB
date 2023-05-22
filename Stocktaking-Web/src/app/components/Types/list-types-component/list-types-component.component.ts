@@ -2,6 +2,7 @@ import { StatusPage } from './../../../enums/enum-status-page';
 
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Type } from 'src/app/entities/type';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
@@ -36,8 +37,8 @@ export class ListTypesComponentComponent implements OnInit, OnDestroy
     /*
         Variales:
     */
-    public allDatas: Array<Type>;
-    
+    public allDatas: ApiResponse<Type[]> | undefined;
+    public allEntities : Array<Type> | undefined;
 
     /*
     Constructor
@@ -49,7 +50,8 @@ export class ListTypesComponentComponent implements OnInit, OnDestroy
         private myRouringService : MyRoutingService
     )
     {
-        this.allDatas = new Array<Type>;
+        this.allDatas = new ApiResponse<Type[]> ();
+        this.allEntities = new Array<Type>();
     }
 
     ngOnInit(): void 
@@ -59,6 +61,7 @@ export class ListTypesComponentComponent implements OnInit, OnDestroy
             response => 
             {
                 this.allDatas = response;
+                this.allEntities = this.allDatas.response;
             }
         )
     }
@@ -93,7 +96,7 @@ export class ListTypesComponentComponent implements OnInit, OnDestroy
     public deleteTypeBtn(typeOfList: Type): void
     {
         let idOfList : number = typeOfList.id;
-        let responseDelete : DeleteResponse;
+        let responseDelete : ApiResponse<Type>;
         this.selectType(typeOfList);
 
         this.typesService.deleteType(idOfList).subscribe

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
 import { UserService } from 'src/app/services/user.service';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 
 
 
@@ -31,19 +32,22 @@ export class ListUserComponentComponent implements OnInit, OnDestroy {
   /*
       Variales:
   */
-  public allDatas: Array<User>;
+  public allDatas: ApiResponse<User[]> | undefined;
+  public allEntities : Array<User> | undefined;
 
 
   /*
   Constructor
   */
   constructor
-    (
-      private usersService: UserService,
-      private router: Router,
-      private myRouringService: MyRoutingService
-    ) {
-    this.allDatas = new Array<User>;
+  (
+    private usersService: UserService,
+    private router: Router,
+    private myRouringService: MyRoutingService
+  ) 
+  {
+    this.allDatas = new ApiResponse<User[]>();
+    this.allEntities = new Array<User>;
   }
 
   ngOnInit(): void {
@@ -51,6 +55,7 @@ export class ListUserComponentComponent implements OnInit, OnDestroy {
       (
         response => {
           this.allDatas = response;
+          this.allEntities = this.allDatas.response;
         }
       )
   }
@@ -73,23 +78,26 @@ export class ListUserComponentComponent implements OnInit, OnDestroy {
     this.changeStatusPage(StatusPage.ReadOne);
   }
 
-  public updateUserBtn(userOfList: User): void {
+  public updateUserBtn(userOfList: User): void 
+  {
     this.selectUser(userOfList);
     this.changeStatusPage(StatusPage.Update);
   }
 
-  public deleteUserBtn(userOfList: User): void {
+  public deleteUserBtn(userOfList: User): void 
+  {
     let idOfList: number = userOfList.id;
-    let responseDelete: DeleteResponse;
+    let responseDelete: ApiResponse<User>;
     this.selectUser(userOfList);
 
     this.usersService.deleteUser(idOfList).subscribe
-      (
-        response => {
-          responseDelete = response;
-          alert(responseDelete.response);
-        }
-      )
+    (
+      response => 
+      {
+        responseDelete = response;
+        alert(responseDelete.messageResult);
+      }
+    )
     this.myRouringService.reloadCurrentRoute(this.router);
   }
 

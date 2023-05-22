@@ -6,6 +6,7 @@ import { User } from '../entities/user';
 import { UserForm } from '../entities-form/user-form';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 
 
@@ -22,13 +23,14 @@ export class UserService extends MyHttpService {
       Constructor
     */
     constructor
-        (
-            private http: HttpClient
-        ) {
+    (
+        private http: HttpClient
+    ) 
+    {
         super();
         this._baseUrl = PathsUser.PATH_SERVER;
         this._user = PathsUser.USER;
-        this._users = PathsUser.USERS;
+        this._users = PathsUser.ALL_USERS;
     }
 
     /*
@@ -37,13 +39,13 @@ export class UserService extends MyHttpService {
       Entrada:
       Salida
     */
-    createUser(newUser: UserForm): Observable<User> {
+    createUser(newUser: UserForm): Observable<ApiResponse<User>> {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._user
 
         //return this.http.post<User>(url, newUser);
         console.log(newUser);
-        return this.http.post<User>(url, newUser, header);
+        return this.http.post<ApiResponse<User>>(url, newUser, header);
     }
 
     /*
@@ -52,10 +54,11 @@ export class UserService extends MyHttpService {
       Entrada:
       Salida
     */
-    readAllUsers(): Observable<User[]> {
+    readAllUsers(): Observable<ApiResponse<User[]>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._users
-        return this.http.get<User[]>(url, header);
+        return this.http.get<ApiResponse<User[]>>(url, header);
     }
 
     /*
@@ -64,10 +67,11 @@ export class UserService extends MyHttpService {
       Entrada:
       Salida
     */
-    readUser(id: number): Observable<User> {
+    readUserById(id: number): Observable<ApiResponse<User>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._user + '?id=' + id
-        return this.http.get<User>(url, header);
+        return this.http.get<ApiResponse<User>>(url, header);
     }
 
     /*
@@ -76,12 +80,12 @@ export class UserService extends MyHttpService {
       Entrada:
       Salida
     */
-    updateUser(changeUser: User): Observable<User> {
+    updateUser(changeUser: User): Observable<ApiResponse<User>> {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._user
         //return this.http.post<NewUser>(url, newUser, {headers: this.headers});
         console.log(changeUser);
-        return this.http.put<User>(url, changeUser);
+        return this.http.put<ApiResponse<User>>(url, changeUser);
     }
 
     /*
@@ -90,12 +94,12 @@ export class UserService extends MyHttpService {
       Entrada:
       Salida
     */
-    deleteUser(id: number): Observable<DeleteResponse> {
+    deleteUser(id: number): Observable<ApiResponse<User>> {
         const header = this.createHeader();
 
         var url: string = this._baseUrl + this._user + '?id=' + id
 
-        return this.http.delete<DeleteResponse>(url, header);
+        return this.http.delete<ApiResponse<User>>(url, header);
     }
 
 

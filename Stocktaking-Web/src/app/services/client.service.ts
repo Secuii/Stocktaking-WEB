@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Client } from '../entities/client';
 import { DeleteResponse } from '../entities-response/delete-response';
 import { ClientForm } from '../entities-form/client-form';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,7 @@ export class ClientService extends MyHttpService
       super();  
       this._baseUrl = PathsApi.PATH_SERVER;
       this._client = PathsApi.CLIENT;
-      this._clients = PathsApi.CLIENTS;
+      this._clients = PathsApi.ALL_CLIENTS;
     }
   
     /*
@@ -39,14 +40,14 @@ export class ClientService extends MyHttpService
       Entrada:
       Salida
     */
-    createClient(newClient: ClientForm): Observable<Client> 
+    createClient(newClient: ClientForm): Observable<ApiResponse<Client>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._client
       
       //return this.http.post<Client>(url, newClient);
       console.log(newClient);
-      return this.http.post<Client>(url, newClient, header);
+      return this.http.post<ApiResponse<Client>>(url, newClient, header);
     }
   
     /*
@@ -55,11 +56,11 @@ export class ClientService extends MyHttpService
       Entrada:
       Salida
     */
-    readAllClients(): Observable<Client[]>
+    readAllClients(): Observable<ApiResponse<Client[]>>
     {
       const header = this.createHeader();
       var url: string = this._baseUrl + this._clients
-      return this.http.get<Client[]> (url, header);
+      return this.http.get<ApiResponse<Client[]>> (url, header);
     }
   
     /*
@@ -68,11 +69,11 @@ export class ClientService extends MyHttpService
       Entrada:
       Salida
     */
-    readClient(id: number): Observable<Client> 
+    readClient(id: number): Observable<ApiResponse<Client>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._client + '?id=' + id
-      return this.http.get<Client>(url, header);
+      return this.http.get<ApiResponse<Client>>(url, header);
     }
     
     /*
@@ -81,13 +82,13 @@ export class ClientService extends MyHttpService
       Entrada:
       Salida
     */
-    updateClient(changeClient: Client): Observable<Client> 
+    updateClient(changeClient: Client): Observable<ApiResponse<Client>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._client
       //return this.http.post<NewClient>(url, newClient, {headers: this.headers});
       console.log(changeClient);
-      return this.http.put<Client>(url, changeClient);
+      return this.http.put<ApiResponse<Client>>(url, changeClient);
     }
   
     /*
@@ -96,22 +97,13 @@ export class ClientService extends MyHttpService
       Entrada:
       Salida
     */
-    deleteClient(id: number): Observable<DeleteResponse> 
+    deleteClient(id: number): Observable<ApiResponse<Client>> 
     {
       const header = this.createHeader();
       
       var url: string = this._baseUrl+ this._client + '?id=' + id
       
-      return this.http.delete<DeleteResponse>(url, header);
+      return this.http.delete<ApiResponse<Client>>(url, header);
     }
-  
-    
-  
-      /*
-    get headers() {
-      return new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-    }*/
    
 }

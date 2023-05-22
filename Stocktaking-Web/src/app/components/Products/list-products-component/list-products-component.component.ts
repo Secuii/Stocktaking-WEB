@@ -5,6 +5,7 @@ import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/cor
 import { Router } from '@angular/router';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 
 @Component
 (
@@ -33,7 +34,8 @@ export class ListProductsComponentComponent implements OnInit, OnDestroy
     /*
         Variales:
     */
-    public allDatas: Array<Product>;
+        public allDatas: ApiResponse<Product[]> | undefined;
+        public allEntities : Product[] | undefined;
     
 
     /*
@@ -46,7 +48,8 @@ export class ListProductsComponentComponent implements OnInit, OnDestroy
         private myRouringService : MyRoutingService
     )
     {
-        this.allDatas = new Array<Product>;
+        this.allDatas = new ApiResponse<Product[]>();
+        this.allEntities = new Array<Product>();
     }
 
     ngOnInit(): void 
@@ -56,6 +59,7 @@ export class ListProductsComponentComponent implements OnInit, OnDestroy
             response => 
             {
                 this.allDatas = response;
+                this.allEntities = this.allDatas.response;
             }
         )
     }
@@ -90,7 +94,7 @@ export class ListProductsComponentComponent implements OnInit, OnDestroy
     public deleteProductBtn(productOfList: Product): void
     {
         let idOfList : number = productOfList.id;
-        let responseDelete : DeleteResponse;
+        let responseDelete : ApiResponse<Product>;
         this.selectProduct(productOfList);
 
         this.productsService.deleteProduct(idOfList).subscribe

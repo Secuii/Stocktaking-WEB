@@ -5,6 +5,8 @@ import { StatusPage } from './../../../enums/enum-status-page';
 import { ProductForm } from './../../../entities-form/product-form';
 import { Product } from './../../../entities/product';
 import { Component, OnInit, OnDestroy, EventEmitter, Output, Input } from '@angular/core';
+import { Type } from 'src/app/entities/type';
+import { TypeService } from 'src/app/services/types.service';
 
 @Component
 (
@@ -19,6 +21,7 @@ import { Component, OnInit, OnDestroy, EventEmitter, Output, Input } from '@angu
     providers:
     [
         ProductService,
+        TypeService,
         MyRoutingService
     ]
   }
@@ -37,6 +40,8 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
   public productForm : ProductForm;
   public workProduct : Product;
 
+  public listTypes : Type[] | undefined;
+  public selectedType : Type | undefined;
 
   /*
     Constructor
@@ -45,12 +50,15 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
   constructor
   (
     private productService : ProductService,
+    private typeService : TypeService,
     private myRoutingService : MyRoutingService,
     private router : Router
   )
   {
     this.productForm = new ProductForm();
     this.workProduct = new Product();
+    this.listTypes = new Array<Type>();
+    this.selectedType = new Type();
   }
   
   /*
@@ -58,6 +66,19 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
   */
   ngOnInit(): void 
   {
+    this.typeService.readAllTypes().subscribe
+    (
+      response =>
+      {
+        this.listTypes = response.response
+
+        if(this.listTypes && this.listTypes.length > 0)
+        {
+          this.selectedType = this.listTypes[0];
+        }
+      }
+    )
+
     if(this.product != undefined)
     {
       if(this.product.id != -1)
@@ -112,6 +133,10 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
     // Si el ID de Product = 0 (Por defecto) -> Crear
     if (this.workProduct.id == -1)
     {
+      if (this.selectedType !== undefined)
+      {
+        this.productForm.type = this.selectedType;
+      }
       this.productService.createProduct(this.productForm).subscribe
       (
         response => 
@@ -122,6 +147,11 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
     }
     else // Si el ID de Product != 0 (Existe) -> Udate
     {
+      if (this.selectedType !== undefined)
+      {
+        this.workProduct.type = this.selectedType;
+      }
+
       this.mapperProduct(); // Mapeamos el workProduct(Product) al formulario(ProductForm)
       this.productService.updateProduct(this.workProduct).subscribe
       (
@@ -149,5 +179,10 @@ export class UpdateProductsComponentComponent implements OnInit, OnDestroy
     this.productForm.name = this.workProduct.name;
     this.productForm.stock = this.workProduct.stock;
     this.productForm.type = this.workProduct.type;
+  }
+
+  public changeTypeSelection()
+  {
+    this.selectedType = this.productForm.type;
   }
 }

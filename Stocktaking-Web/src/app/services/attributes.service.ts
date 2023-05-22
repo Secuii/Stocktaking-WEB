@@ -5,9 +5,7 @@ import { Injectable } from '@angular/core';
 import { Attribute } from '../entities/attribute';
 import { AttributeForm } from '../entities-form/attribute-form';
 import { MyHttpService } from './my-http-service';
-import { DeleteResponse } from '../entities-response/delete-response';
-
-
+import { ApiResponse } from '../entities-response/apiResponse';
 
 @Injectable()
 export class AttributeService extends MyHttpService {
@@ -28,7 +26,7 @@ export class AttributeService extends MyHttpService {
         super();
         this._baseUrl = PathsApi.PATH_SERVER;
         this._attribute = PathsApi.ATTRIBUTE;
-        this._attributes = PathsApi.ATTRIBUTES;
+        this._attributes = PathsApi.ALL_ATTRIBUTES;
     }
 
     /*
@@ -37,13 +35,15 @@ export class AttributeService extends MyHttpService {
       Entrada:
       Salida
     */
-    createAttribute(newAttribute: AttributeForm): Observable<Attribute> {
+    createAttribute(newAttribute: AttributeForm): Observable<ApiResponse<Attribute>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._attribute
 
         //return this.http.post<Attribute>(url, newAttribute);
         console.log(newAttribute);
-        return this.http.post<Attribute>(url, newAttribute, header);
+        console.log(url);
+        return this.http.post<ApiResponse<Attribute>>(url, newAttribute, header);
     }
 
     /*
@@ -52,10 +52,11 @@ export class AttributeService extends MyHttpService {
       Entrada:
       Salida
     */
-    readAllAttributes(): Observable<Attribute[]> {
+    readAllAttributes(): Observable<ApiResponse<Attribute[]>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._attributes
-        return this.http.get<Attribute[]>(url, header);
+        return this.http.get<ApiResponse<Attribute[]>>(url, header);
     }
 
     /*
@@ -64,10 +65,11 @@ export class AttributeService extends MyHttpService {
       Entrada:
       Salida
     */
-    readAttribute(id: number): Observable<Attribute> {
+    readAttribute(id: number): Observable<ApiResponse<Attribute>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._attribute + '?id=' + id
-        return this.http.get<Attribute>(url, header);
+        return this.http.get<ApiResponse<Attribute>>(url, header);
     }
 
     /*
@@ -76,12 +78,13 @@ export class AttributeService extends MyHttpService {
       Entrada:
       Salida
     */
-    updateAttribute(changeAttribute: Attribute): Observable<Attribute> {
+    updateAttribute(changeAttribute: Attribute): Observable<ApiResponse<Attribute>> 
+    {
         const header = this.createHeader();
         var url: string = this._baseUrl + this._attribute
         //return this.http.post<NewAttribute>(url, newAttribute, {headers: this.headers});
         console.log(changeAttribute);
-        return this.http.put<Attribute>(url, changeAttribute);
+        return this.http.put<ApiResponse<Attribute>>(url, changeAttribute);
     }
 
     /*
@@ -90,21 +93,13 @@ export class AttributeService extends MyHttpService {
       Entrada:
       Salida
     */
-    deleteAttribute(id: number): Observable<DeleteResponse> {
+    deleteAttribute(id: number): Observable<ApiResponse<Attribute>> 
+    {
         const header = this.createHeader();
 
         var url: string = this._baseUrl + this._attribute + '?id=' + id
 
-        return this.http.delete<DeleteResponse>(url, header);
+        return this.http.delete<ApiResponse<Attribute>>(url, header);
     }
-
-
-
-    /*
-  get headers() {
-    return new HttpHeaders()
-    .set('Content-Attribute', 'application/json')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-  }*/
 
 }

@@ -11,6 +11,7 @@
                     <th scope="col" class="" (click)="this.orderById()">Id</th>
                     <th scope="col" class="" (click)="this.orderByName()">Name</th>
                     <th scope="col" class="" (click)="this.orderByPrice()">Description</th>
+                    <th scope="col" class="" (click)="this.orderByType()">Data Type</th>
                     <th scope="col" class="">Show More</th>
                     <th scope="col" class="">Update</th>
                     <th scope="col" class="">Delete</th>
@@ -18,10 +19,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of this.allDatas; let i = index" class="trUser">
+                <tr *ngFor="let item of this.allEntities; let i = index" class="trUser">
                     <td class=""> {{item?.id}} </td>
                     <td class=""> {{item?.name}} </td>
                     <td class=""> {{item?.description}} </td>
+                    <td class=""> {{item?.valueType}} </td>
                     <td class="">
                         <button attributes="button" class="btn btn-outline-success btnCommon"
                             (click)="this.showAttributesBtn(item)">

@@ -5,6 +5,8 @@ import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angu
 import { UserService } from './../../../services/user.service';
 import { User } from 'src/app/entities/user';
 import { UserForm } from './../../../entities-form/user-form';
+import { Membership } from 'src/app/entities/membership';
+import { MembershipService } from 'src/app/services/membership.service';
 
 
 
@@ -15,13 +17,13 @@ import { UserForm } from './../../../entities-form/user-form';
   styleUrls: ['./../../components.css'],
   providers:
     [
+      MembershipService,
       UserService,
       MyRoutingService
     ]
 })
-export class UpdateUserComponentComponent implements OnInit, OnDestroy {
-
-
+export class UpdateUserComponentComponent implements OnInit, OnDestroy 
+{
 
   /*
     Eventos
@@ -35,25 +37,48 @@ export class UpdateUserComponentComponent implements OnInit, OnDestroy {
   public userForm: UserForm
   public workUser: User;
 
+  public listMemberships : Membership[] | undefined;
+  public selectedMembership : Membership  | undefined;
+
+
   /*
     Constructor
     this.myRoutingService.reloadCurrentRoute(this.router);
   */
   constructor
-    (
-      private userService: UserService,
-      private myRoutingService: MyRoutingService,
-      private router: Router
-    ) {
+  (
+    private userService: UserService,
+    private membershipService : MembershipService,
+    private myRoutingService: MyRoutingService,
+    private router: Router
+  ) 
+  {
     this.userForm = new UserForm();
     this.workUser = new User();
+    this.listMemberships = new Array<Membership>();
+    this.selectedMembership = new Membership();
   }
 
   /*
     Métodos implementados de interfaces
   */
-  ngOnInit(): void {
-    if (this.user != undefined) {
+  ngOnInit(): void 
+  {
+    this.membershipService.readAllMemberships().subscribe
+    (
+        response =>
+        {
+          this.listMemberships = response.response;
+          // Verificar si listMemberships no es undefined y tiene al menos un elemento
+          if (this.listMemberships && this.listMemberships.length > 0) 
+          {
+            this.selectedMembership = this.listMemberships[0]; // Asignar el primer elemento
+          }
+        }
+    )
+
+    if (this.user != undefined) 
+    {
       if (this.user.id != -1) {
         //this.workUser = this.user;
         this.workUser.id = this.user.id;
@@ -63,8 +88,7 @@ export class UpdateUserComponentComponent implements OnInit, OnDestroy {
         this.workUser.age = this.user.age;
         this.workUser.password = this.user.password;
         this.workUser.membership = this.user.membership;
-
-
+        this.selectedMembership = this.workUser.membership;
         this.userForm.id = this.user.id;
       }
       else {
@@ -81,40 +105,58 @@ export class UpdateUserComponentComponent implements OnInit, OnDestroy {
   /*
     Métodos de Botones
   */
-  public goBackBtn() {
+  public goBackBtn() 
+  {
     this.changeStatusPage(StatusPage.ReadAll);
   }
 
-  public sendDatasBtn(formData: UserForm) {
+  public sendDatasBtn(formData: UserForm) 
+  {
 
   }
 
   /*
     Métodos de estados
   */
-  private changeStatusPage(newStatusPage: StatusPage) {
+  private changeStatusPage(newStatusPage: StatusPage) 
+  {
     this.statusPageEvent.emit(newStatusPage);
   }
 
   /*
     Métodos de formulario
   */
-  public submitSendDatas(userForm: UserForm) {
+  public submitSendDatas(userForm: UserForm) 
+  {
     // Si el ID de User = 0 (Por defecto) -> Crear
-    if (this.workUser.id == -1) {
+    if (this.workUser.id == -1) 
+    {
+      if (this.selectedMembership !== undefined) 
+      {
+        this.userForm.membership = this.selectedMembership; // Asignar el objeto Membership seleccionado
+      }
+      console.log(this.userForm);
       this.userService.createUser(this.userForm).subscribe
         (
-          response => {
+          response => 
+          {
             alert("User created");
           }
         )
     }
     else // Si el ID de User != 0 (Existe) -> Udate
     {
+      if (this.selectedMembership !== undefined) 
+      {
+        this.workUser.membership = this.selectedMembership; // Asignar el objeto Membership seleccionado
+      }
+      console.log(this.workUser);
       this.mapperUser(); // Mapeamos el workUser(User) al formulario(UserForm)
+      console.log(this.workUser);
       this.userService.updateUser(this.workUser).subscribe
         (
-          response => {
+          response => 
+          {
             alert("User modified");
           }
         )
@@ -123,29 +165,34 @@ export class UpdateUserComponentComponent implements OnInit, OnDestroy {
     this.myRoutingService.reloadCurrentRoute(this.router);
   }
 
-  private mapperUser(): void {
+  private mapperUser(): void 
+  {
     this.workUser.name = this.userForm.name;
     this.workUser.lastName = this.userForm.lastName;
     this.workUser.email = this.userForm.email;
     this.workUser.age = this.userForm.age;
     this.workUser.password = this.userForm.password;
+    
+    
     this.workUser.membership = this.userForm.membership;
-
   }
 
-  public resetForm() {
+  public resetForm() 
+  {
     this.userForm.name = this.workUser.name;
     this.userForm.lastName = this.workUser.lastName;
     this.userForm.email = this.workUser.email;
     this.userForm.age = this.workUser.age;
     this.userForm.password = this.workUser.password;
-    this.userForm.membership = this.workUser.membership;
-
-
-
+    this.selectedMembership = this.workUser.membership;
+    if (this.selectedMembership != undefined)
+    {
+      this.userForm.membership = this.selectedMembership; // Asignar el objeto Membership seleccionado
+    }
   }
 
-
-
-
+  public changeMembershipSelection()
+  {
+    this.selectedMembership = this.userForm.membership;
+  }
 }

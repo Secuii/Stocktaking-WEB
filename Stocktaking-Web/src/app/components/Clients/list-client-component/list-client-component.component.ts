@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Client } from 'src/app/entities/client';
 import { StatusPage } from 'src/app/enums/enum-status-page';
@@ -31,8 +32,8 @@ export class ListClientComponentComponent implements OnInit, OnDestroy
         /*
             Variales:
         */
-        public allDatas: Array<Client>;
-        
+        public allDatas : ApiResponse<Client[]> | undefined;
+        public allEntities :  Array<Client> | undefined;
     
         /*
         Constructor
@@ -44,7 +45,8 @@ export class ListClientComponentComponent implements OnInit, OnDestroy
             private myRouringService : MyRoutingService
         )
         {
-            this.allDatas = new Array<Client>;
+            this.allDatas = new ApiResponse<Client[]>();
+            this.allEntities = new Array<Client>();
         }
     
         ngOnInit(): void 
@@ -54,6 +56,7 @@ export class ListClientComponentComponent implements OnInit, OnDestroy
                 response => 
                 {
                     this.allDatas = response;
+                    this.allEntities = this.allDatas.response;
                 }
             )
         }
@@ -88,7 +91,7 @@ export class ListClientComponentComponent implements OnInit, OnDestroy
         public deleteClientBtn(clientOfList: Client): void
         {
             let idOfList : number = clientOfList.id;
-            let responseDelete : DeleteResponse;
+            let responseDelete : ApiResponse<Client>;
             this.selectClient(clientOfList);
     
             this.clientsService.deleteClient(idOfList).subscribe

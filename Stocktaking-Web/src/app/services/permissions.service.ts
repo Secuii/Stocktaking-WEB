@@ -6,6 +6,7 @@ import { Permission } from '../entities/permission';
 import { PermissionForm } from '../entities-form/permission-form';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 
 
@@ -28,16 +29,8 @@ export class PermissionService extends MyHttpService {
     super();
     this._baseUrl = PathsUser.PATH_SERVER;
     this._permission = PathsUser.PERMISSION;
-    this._permissions = PathsUser.PERMISSIONS;
+    this._permissions = PathsUser.ALL_PERMISSIONS;
   }
-
-
-  findPermissions(): Observable<Permission[]> {
-    var url: string = this._baseUrl + this._permissions
-    return this.http.get<Permission[]>(url);
-  }
-
-
 
   /*
     Método (Crud -> Create) Crear permission
@@ -45,13 +38,14 @@ export class PermissionService extends MyHttpService {
     Entrada:
     Salida
   */
-  createPermission(newPermission: PermissionForm): Observable<Permission> {
+  createPermission(newPermission: PermissionForm): Observable<ApiResponse<Permission>> 
+  {
     const header = this.createHeader();
     var url: string = this._baseUrl + this._permission
 
     //return this.http.post<Permission>(url, newPermission);
     console.log(newPermission);
-    return this.http.post<Permission>(url, newPermission, header);
+    return this.http.post<ApiResponse<Permission>>(url, newPermission, header);
   }
 
   /*
@@ -60,10 +54,11 @@ export class PermissionService extends MyHttpService {
     Entrada:
     Salida
   */
-  readAllPermissions(): Observable<Permission[]> {
+  readAllPermissions(): Observable<ApiResponse<Permission[]>> 
+  {
     const header = this.createHeader();
     var url: string = this._baseUrl + this._permissions
-    return this.http.get<Permission[]>(url, header);
+    return this.http.get<ApiResponse<Permission[]>>(url, header);
   }
 
   /*
@@ -72,7 +67,8 @@ export class PermissionService extends MyHttpService {
     Entrada:
     Salida
   */
-  readPermission(id: number): Observable<Permission> {
+  readPermission(id: number): Observable<Permission> 
+  {
     const header = this.createHeader();
     var url: string = this._baseUrl + this._permission + '?id=' + id
     return this.http.get<Permission>(url, header);
@@ -84,12 +80,12 @@ export class PermissionService extends MyHttpService {
     Entrada:
     Salida
   */
-  updatePermission(changePermission: Permission): Observable<Permission> {
+  updatePermission(changePermission: Permission): Observable<ApiResponse<Permission>> {
     const header = this.createHeader();
     var url: string = this._baseUrl + this._permission
     //return this.http.post<NewPermission>(url, newPermission, {headers: this.headers});
     console.log(changePermission);
-    return this.http.put<Permission>(url, changePermission);
+    return this.http.put<ApiResponse<Permission>>(url, changePermission);
   }
 
   /*
@@ -98,21 +94,12 @@ export class PermissionService extends MyHttpService {
     Entrada:
     Salida
   */
-  deletePermission(id: number): Observable<DeleteResponse> {
+  deletePermission(id: number): Observable<ApiResponse<Permission>> {
     const header = this.createHeader();
 
     var url: string = this._baseUrl + this._permission + '?id=' + id
 
-    return this.http.delete<DeleteResponse>(url, header);
+    return this.http.delete<ApiResponse<Permission>>(url, header);
   }
-
-
-
-  /*
-get headers() {
-  return new HttpHeaders()
-  .set('Content-Permission', 'application/json')
-  .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-}*/
 
 }

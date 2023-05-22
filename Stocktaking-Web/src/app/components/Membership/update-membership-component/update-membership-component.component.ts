@@ -1,4 +1,3 @@
-import { Product } from './../../../entities/product';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MembershipForm } from 'src/app/entities-form/membership-form';
@@ -39,14 +38,7 @@ export class UpdateMembershipComponentComponent implements OnInit
     //public membership: Membership;
     public membershipForm : MembershipForm;
     public workMembership : Membership;
-    //public idMembership: number;
-    //public membershipAux: Membership;
-  
-      //public listMembershipChecker: ListMembershipChecker;
-      
-      //public messageCompare: string;
-  
-      //public allValid: boolean;
+   
       /*
           Constructor:
       */
@@ -55,26 +47,11 @@ export class UpdateMembershipComponentComponent implements OnInit
           private activatedRoute: ActivatedRoute, 
           private membershipService: MembershipService,
           private myRoutingService : MyRoutingService,
-          //private loginCookiesController: LoginCookiesController,
           private router: Router,
-          //private checkMembership: CheckMembershipService
       )
       {
             this.membershipForm = new MembershipForm();
             this.workMembership = new Membership();
-        
-
-        //this.membership= new Membership();
-
-        //this.idMembership = 0;
-  
-        //this.membershipAux = new Membership();
-        
-        //this.listMembershipChecker = new ListMembershipChecker;
-        
-        //this.messageCompare = "";
-
-        //this.allValid = false;
       }
 
     /*
@@ -92,6 +69,8 @@ export class UpdateMembershipComponentComponent implements OnInit
             this.workMembership.price = this.membership.price;
     
             this.membershipForm.id = this.membership.id;
+
+            this.resetForm();
           }
           else
           {
@@ -159,112 +138,28 @@ export class UpdateMembershipComponentComponent implements OnInit
     private mapperMembership () : void
     {
       this.workMembership.name = this.membershipForm.name;
+      this.workMembership.description = this.membershipForm.description;
       this.workMembership.price = this.membershipForm.price;
     }
   
     public resetForm()
     {
       this.membershipForm.name = this.workMembership.name;
+      this.membershipForm.description = this.workMembership.description;
       this.membershipForm.price = this.workMembership.price;
     }
 
 
-
-
-
-
-
-
-      /*ANTERIOR--------------------------------------------------------------------------------
-      -------------------------------------------------------------------------------------*/
-    /*{
-        this.activatedRoute.params.subscribe
-        (
-            params => 
-            {
-                this.idMembership = params['id'];
-            }
-        );
-
-        this.getMembershipFromIdService();
-    }*/
-
     /*
-        Método getMembershipFromIdService:
-            Entradas: Ninguna: El id lo obtiene de this.membership.
-            Objetivo: petición al servicio del membership a construir por id.
+        Método checkAll:
+            Entradas: Ninguna.
+            Objetivo: Realizar los checkeos de todos los campos del formulario
             Salidas: Ninguna
     */
-    private getMembershipFromIdService(): void
-    {
-      /*
-        this.membershipService.readAMembership(this.idMembership).subscribe(
-            response => 
-            {
-                this.membership = response;
-                this.membershipAux = new Membership();
-                this.membershipAux.setAllId(this.membership.id, this.membership.name, this.membership.price);
-            }
-        )
-        */
-    }
-
-
-/*
-    Método checkAll:
-        Entradas: Ninguna.
-        Objetivo: Realizar los checkeos de todos los campos del formulario
-        Salidas: Ninguna
-*/
     public checkAll(): void
     {
-      /*
-        this.listMembershipChecker = this.checkMembership.checkAll(this.membership);
-        if (this.listMembershipChecker.allCheck)
-        {
-            if(!this.compareOffers())
-            {
-                this.allValid = true;
-                this.messageCompare = ""
-            }
-            else
-            {
-                this.allValid = false;
-                this.messageCompare = "No hay cambios."
-            }
-        }
-        else
-        {
-            this.allValid = false;
-            this.messageCompare = ""
-        }
-        */
+      
     }
-
-        /*
-        Método compareMemberships:
-            Entradas: Ninguna.
-            Objetivo: Pregunta si la oferta del formulario ha cambiado con respecto a la inicial
-            Salidas: Booleana. (true: Si se ha conseguido | false: Si no se ha conseguido)
-    */
-
-    /*
-    private compareMemberships(): boolean
-    {
-        if
-        (
-            this.membership.name == this.membershipAux.name && 
-            this.membership.price == this.membershipAux.price 
-        )
-        {
-            return true; // Son iguales
-        }
-        else
-        {
-            return false; // No son iguales
-        }
-    }
-    */
 
     /*
         Método submitOfferUpdate
@@ -275,31 +170,7 @@ export class UpdateMembershipComponentComponent implements OnInit
    
     public submitMembershipUpdate(form: Membership) : void
     { 
-      /*
-        this.membershipService.updateAMembership(this.membership, this.loginCookiesController.getToken()).subscribe
-        (
-            response => 
-            {
-                alert("Membership Updated.");
-                this.router.navigate(['membershipsList']);
-            },
-            error  =>
-            { 
-                alert("Error");
-            }
-        )
-        */
+      
     }
-
-  /*
-      Métodos de enrutamiento
-  */
-
-      /*
-
-    public mainPageBtn() {
-      this.router.navigateByUrl('/main');
-    }
-*/
 
 }

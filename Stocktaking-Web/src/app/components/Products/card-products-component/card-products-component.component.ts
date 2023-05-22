@@ -1,7 +1,6 @@
 import { Product } from './../../../entities/product';
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { Type } from 'src/app/entities/type';
 import { StatusPage } from 'src/app/enums/enum-status-page';
 
 

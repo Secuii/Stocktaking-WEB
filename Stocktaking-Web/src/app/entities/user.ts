@@ -5,6 +5,7 @@ export class User
     public id : number;
     public name : string;
     public lastName : string;
+    public secondLastName: string;
     public email : string;
     public age : number;
     public password : string;
@@ -15,6 +16,7 @@ export class User
         this.id = -1;
         this.name = "";
         this.lastName = "";
+        this.secondLastName = "";
         this.email = "";
         this.age = -1;
         this.password = "";

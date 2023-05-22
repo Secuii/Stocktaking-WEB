@@ -35,7 +35,8 @@ export class CardAttributesComponentComponent implements OnInit, OnDestroy {
     (
       private router: Router,
       private activatedRoute: ActivatedRoute
-    ) {
+    ) 
+  {
     this.attributes = new Attribute();
     this.idAttributes = 0;
   }
@@ -59,7 +60,8 @@ export class CardAttributesComponentComponent implements OnInit, OnDestroy {
     this.changeStatusPage(StatusPage.ReadAll);
   }
 
-  private changeStatusPage(newStatusPage: StatusPage) {
+  private changeStatusPage(newStatusPage: StatusPage) 
+  {
     this.statusPageEvent.emit(newStatusPage);
   }
 }

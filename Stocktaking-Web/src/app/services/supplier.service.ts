@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { PathsApi } from '../PathsApi/PathsApi';
 import { Supplier } from '../entities/supplier';
 import { Observable } from 'rxjs';
-import { NewSupplier } from '../entities/supplier_interface';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
 import { SupplierForm } from '../entities-form/supplier-form';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class SupplierService extends MyHttpService
     super();  
     this._baseUrl = PathsApi.PATH_SERVER;
     this._supplier = PathsApi.SUPPLIER;
-    this._suppliers = PathsApi.SUPPLIERS;
+    this._suppliers = PathsApi.ALL_SUPPLIERS;
   }
 
 /*
@@ -40,14 +40,14 @@ export class SupplierService extends MyHttpService
     Entrada:
     Salida
   */
-    createSupplier(newSupplier: SupplierForm): Observable<Supplier> 
+    createSupplier(newSupplier: SupplierForm): Observable<ApiResponse<Supplier>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._supplier
       
       //return this.http.post<Supplier>(url, newSupplier);
       console.log(newSupplier);
-      return this.http.post<Supplier>(url, newSupplier, header);
+      return this.http.post<ApiResponse<Supplier>>(url, newSupplier, header);
     }
   
     /*
@@ -56,11 +56,11 @@ export class SupplierService extends MyHttpService
       Entrada:
       Salida
     */
-    readAllSuppliers(): Observable<Supplier[]>
+    readAllSuppliers(): Observable<ApiResponse<Supplier[]>>
     {
       const header = this.createHeader();
       var url: string = this._baseUrl + this._suppliers
-      return this.http.get<Supplier[]> (url, header);
+      return this.http.get<ApiResponse<Supplier[]>> (url, header);
     }
   
     /*
@@ -69,11 +69,11 @@ export class SupplierService extends MyHttpService
       Entrada:
       Salida
     */
-    readSupplier(id: number): Observable<Supplier> 
+    readSupplier(id: number): Observable<ApiResponse<Supplier>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._supplier + '?id=' + id
-      return this.http.get<Supplier>(url, header);
+      return this.http.get<ApiResponse<Supplier>>(url, header);
     }
     
     /*
@@ -82,13 +82,13 @@ export class SupplierService extends MyHttpService
       Entrada:
       Salida
     */
-    updateSupplier(changeSupplier: Supplier): Observable<Supplier> 
+    updateSupplier(changeSupplier: Supplier): Observable<ApiResponse<Supplier>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._supplier
       //return this.http.post<NewSupplier>(url, newSupplier, {headers: this.headers});
       console.log(changeSupplier);
-      return this.http.put<Supplier>(url, changeSupplier);
+      return this.http.put<ApiResponse<Supplier>>(url, changeSupplier);
     }
   
     /*
@@ -97,51 +97,13 @@ export class SupplierService extends MyHttpService
       Entrada:
       Salida
     */
-    deleteSupplier(id: number): Observable<DeleteResponse> 
+    deleteSupplier(id: number): Observable<ApiResponse<Supplier>> 
     {
       const header = this.createHeader();
       
       var url: string = this._baseUrl+ this._supplier + '?id=' + id
       
-      return this.http.delete<DeleteResponse>(url, header);
+      return this.http.delete<ApiResponse<Supplier>>(url, header);
     }
-  
-
-/*---------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------------------------*/
-
-  /*
-  findSuppliers(): Observable<Supplier[]>{
-    var url: string = this._baseUrl + this._suppliers
-    return this.http.get<Supplier[]>(url);
-  }
-
-  getSupplierById(id: number): Observable<Supplier> {
-    var url: string = this._baseUrl+ this._supplier + '?id=' + id
-    return this.http.get<Supplier>(url);
-  }
-  
-  deleteSupplier(id: number): Observable<Supplier> {
-    var url: string = this._baseUrl+ this._supplier + '?id=' + id
-    return this.http.delete<Supplier>(url);
-  }
-
-
-  addSupplier(newSupplier: NewSupplier): Observable<NewSupplier> {
-    var url: string = this._baseUrl+ this._supplier
-    //return this.http.post<NewSupplier>(url, newSupplier, {headers: this.headers});
-    return this.http.post<NewSupplier>(url, newSupplier);
-  }
-
-*/
-    /*
-  get headers() {
-    return new HttpHeaders()
-    .set('Content-Type', 'application/json')
-    .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-  }
-  */
   
 }

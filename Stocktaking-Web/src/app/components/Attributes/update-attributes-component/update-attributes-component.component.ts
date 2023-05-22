@@ -44,7 +44,8 @@ export class UpdateAttributesComponentComponent implements OnInit, OnDestroy {
       private attributeservice: AttributeService,
       private myRoutingService: MyRoutingService,
       private router: Router
-    ) {
+    ) 
+  {
     this.attributesForm = new AttributeForm();
     this.workAttributes = new Attribute();
   }
@@ -52,17 +53,23 @@ export class UpdateAttributesComponentComponent implements OnInit, OnDestroy {
   /*
     Métodos implementados de interfaces
   */
-  ngOnInit(): void {
-    if (this.attributes != undefined) {
-      if (this.attributes.id != -1) {
+  ngOnInit(): void 
+  {
+    if (this.attributes != undefined) 
+    {
+      if (this.attributes.id != -1) 
+      {
         //this.workAttributes = this.attributes;
         this.workAttributes.id = this.attributes.id;
         this.workAttributes.name = this.attributes.name;
         this.workAttributes.description = this.attributes.description;
+        this.workAttributes.valueType = this.attributes.valueType;
 
         this.attributesForm.id = this.attributes.id;
+        this.resetForm();
       }
-      else {
+      else 
+      {
       }
 
     }
@@ -121,10 +128,12 @@ export class UpdateAttributesComponentComponent implements OnInit, OnDestroy {
   private mapperAttributes(): void {
     this.workAttributes.name = this.attributesForm.name;
     this.workAttributes.description = this.attributesForm.description;
+    this.workAttributes.valueType = this.attributesForm.valueType;
   }
 
   public resetForm() {
     this.attributesForm.name = this.workAttributes.name;
     this.attributesForm.description = this.workAttributes.description;
+    this.attributesForm.valueType = this.workAttributes.valueType;
   }
 }

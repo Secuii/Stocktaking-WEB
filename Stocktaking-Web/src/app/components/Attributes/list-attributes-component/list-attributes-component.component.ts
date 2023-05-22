@@ -1,12 +1,13 @@
+
 import { StatusPage } from './../../../enums/enum-status-page';
 
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Attribute } from 'src/app/entities/attribute';
 import { MyRoutingService } from 'src/app/services/my.routing.service';
 
 import { AttributeService } from 'src/app/services/attributes.service';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 
 
 @Component
@@ -35,8 +36,8 @@ export class ListAttributesComponentComponent implements OnInit, OnDestroy {
   /*
       Variales:
   */
-  public allDatas: Array<Attribute>;
-
+  public allDatas: ApiResponse<Attribute[]> | undefined;
+  public allEntities : Attribute[] | undefined;
 
   /*
   Constructor
@@ -46,15 +47,20 @@ export class ListAttributesComponentComponent implements OnInit, OnDestroy {
       private attributeservice: AttributeService,
       private router: Router,
       private myRouringService: MyRoutingService
-    ) {
-    this.allDatas = new Array<Attribute>;
+    ) 
+  {
+    this.allDatas = new ApiResponse<Attribute[]> () ;
+    this.allEntities = new Array<Attribute>();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.attributeservice.readAllAttributes().subscribe
       (
-        response => {
+        response => 
+        {
           this.allDatas = response;
+          this.allEntities = this.allDatas.response;
         }
       )
   }
@@ -67,31 +73,36 @@ export class ListAttributesComponentComponent implements OnInit, OnDestroy {
       Métodos de Estados
   */
 
-  public createAttributesBtn() {
+  public createAttributesBtn() 
+  {
     this.selectAttributes(new Attribute());
     this.changeStatusPage(StatusPage.Create);
   }
 
-  public showAttributesBtn(attributesOfList: Attribute): void {
+  public showAttributesBtn(attributesOfList: Attribute): void 
+  {
     this.selectAttributes(attributesOfList);
     this.changeStatusPage(StatusPage.ReadOne);
   }
 
-  public updateAttributesBtn(attributesOfList: Attribute): void {
+  public updateAttributesBtn(attributesOfList: Attribute): void 
+  {
     this.selectAttributes(attributesOfList);
     this.changeStatusPage(StatusPage.Update);
   }
 
-  public deleteAttributesBtn(attributesOfList: Attribute): void {
+  public deleteAttributesBtn(attributesOfList: Attribute): void 
+  {
     let idOfList: number = attributesOfList.id;
-    let responseDelete: DeleteResponse;
+    let responseDelete: ApiResponse<Attribute>;
     this.selectAttributes(attributesOfList);
 
     this.attributeservice.deleteAttribute(idOfList).subscribe
       (
-        response => {
+        response => 
+        {
           responseDelete = response;
-          alert(responseDelete.response);
+          alert(responseDelete.messageResult);
         }
       )
     this.myRouringService.reloadCurrentRoute(this.router);
@@ -118,5 +129,9 @@ export class ListAttributesComponentComponent implements OnInit, OnDestroy {
 
   }
 
+  public orderByType() : void
+  {
+
+  }
 
 }

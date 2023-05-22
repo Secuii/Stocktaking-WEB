@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Supplier } from 'src/app/entities/supplier';
 import { StatusPage } from 'src/app/enums/enum-status-page';
@@ -33,8 +34,8 @@ export class ListSuppliersComponentComponent implements OnInit, OnDestroy {
    /*
         Variales:
     */
-        public allDatas: Supplier[];
-        //t_deleteFailed: string  = '';
+        public allDatas: ApiResponse<Supplier[]> | undefined;
+        public allEntities : Supplier[] | undefined;
     /*
         Constructor
     */
@@ -46,7 +47,8 @@ export class ListSuppliersComponentComponent implements OnInit, OnDestroy {
         private myRouringService : MyRoutingService
     )
     {
-        this.allDatas = new Array<Supplier>;
+        this.allDatas = new ApiResponse<Supplier[]>();
+        this.allEntities = new Array<Supplier>();
         //this.allDatas=[];
         //this.supplierService.findSuppliers().subscribe(res => this.allDatas = res);
     }
@@ -58,6 +60,7 @@ export class ListSuppliersComponentComponent implements OnInit, OnDestroy {
             response =>
             {
                 this.allDatas = response;
+                this.allEntities = this.allDatas.response;
             }
         )
     }
@@ -88,7 +91,7 @@ export class ListSuppliersComponentComponent implements OnInit, OnDestroy {
     public deleteSupplierBtn(supplierOfList: Supplier): void
     {
         let idOfList : number = supplierOfList.id;
-        let responseDelete : DeleteResponse;
+        let responseDelete : ApiResponse<Supplier>;
         this.selectSupplier(supplierOfList);
 
         this.supplierService.deleteSupplier(idOfList).subscribe

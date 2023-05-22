@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { PathsApi } from '../PathsApi/PathsApi';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
+import { ApiResponse } from '../entities-response/apiResponse';
 
 
 @Injectable()
@@ -30,7 +31,7 @@ export class ProductService extends MyHttpService
       super();  
       this._baseUrl = PathsApi.PATH_SERVER;
       this._product = PathsApi.PRODUCT;
-      this._products = PathsApi.PRODUCTS;
+      this._products = PathsApi.ALL_PRODUCTS;
     }
   
     /*
@@ -40,14 +41,14 @@ export class ProductService extends MyHttpService
       Salida
     */
 
-    createProduct(newProduct: ProductForm): Observable<Product> 
+    createProduct(newProduct: ProductForm): Observable<ApiResponse<Product>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._product
     
     //return this.http.post<Product>(url, newProduct);
     console.log(newProduct);
-    return this.http.post<Product>(url, newProduct, header);
+    return this.http.post<ApiResponse<Product>>(url, newProduct, header);
   }
   
     /*
@@ -56,11 +57,11 @@ export class ProductService extends MyHttpService
       Entrada:
       Salida
     */
-    readAllProducts(): Observable<Product[]>
+    readAllProducts(): Observable<ApiResponse<Product[]>>
     {
       const header = this.createHeader();
       var url: string = this._baseUrl + this._products
-      return this.http.get<Product[]> (url, header);
+      return this.http.get<ApiResponse<Product[]>> (url, header);
     }
   
     /*
@@ -69,11 +70,11 @@ export class ProductService extends MyHttpService
       Entrada:
       Salida
     */
-      ReadProduct(id: number): Observable<Product> 
+      ReadProduct(id: number): Observable<ApiResponse<Product>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._product + '?id=' + id
-      return this.http.get<Product>(url, header);
+      return this.http.get<ApiResponse<Product>>(url, header);
     }
     
     /*
@@ -82,13 +83,13 @@ export class ProductService extends MyHttpService
       Entrada:
       Salida
     */
-    updateProduct(changeProduct: Product): Observable<Product> 
+    updateProduct(changeProduct: Product): Observable<ApiResponse<Product>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._product
       //return this.http.post<NewProduct>(url, newProduct, {headers: this.headers});
       console.log(changeProduct);
-      return this.http.put<Product>(url, changeProduct);
+      return this.http.put<ApiResponse<Product>>(url, changeProduct);
     }
   
     /*
@@ -97,13 +98,13 @@ export class ProductService extends MyHttpService
       Entrada:
       Salida
     */
-    deleteProduct(id: number): Observable<DeleteResponse> 
+    deleteProduct(id: number): Observable<ApiResponse<Product>> 
     {
       const header = this.createHeader();
       
       var url: string = this._baseUrl+ this._product + '?id=' + id
       
-      return this.http.delete<DeleteResponse>(url, header);
+      return this.http.delete<ApiResponse<Product>>(url, header);
     }
   
     

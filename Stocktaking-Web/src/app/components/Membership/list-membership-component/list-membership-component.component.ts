@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter, Attribute } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiResponse } from 'src/app/entities-response/apiResponse';
 import { DeleteResponse } from 'src/app/entities-response/delete-response';
 import { Membership } from 'src/app/entities/membership';
 import { StatusPage } from 'src/app/enums/enum-status-page';
@@ -34,7 +35,8 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
    /*
         Variales:
     */
-        public allDatas: Array<Membership>;
+        public allDatas: ApiResponse<Membership[]> | undefined;
+        public allEntities : Array<Membership>  | undefined;
         //public allDatas: Membership[];
     /*
         Constructor
@@ -46,16 +48,18 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
         private myRouringService : MyRoutingService
     )
     {
-        this.allDatas = new Array<Membership>;
+        this.allDatas = new ApiResponse<Membership[]> ();
+        this.allEntities = new Array<Membership>;
     }
 
-    ngOnInit(): void 
+    ngOnInit(): void
     {
-        this.membershipService.findMemberships().subscribe
+        this.membershipService.readAllMemberships().subscribe
         (
             response =>
             {
                 this.allDatas = response;
+                this.allEntities = this.allDatas.response;
             }
         )
     }
@@ -89,7 +93,7 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
       public deleteMembershipBtn(membershipOfList: Membership): void
       {
           let idOfList : number = membershipOfList.id;
-          let responseDelete : DeleteResponse;
+          let responseDelete : ApiResponse<Membership>;
           this.selectMembership(membershipOfList);
   
           this.membershipService.deleteMembership(idOfList).subscribe
@@ -97,7 +101,7 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
               response => 
               {
                   responseDelete = response;
-                  alert (responseDelete.response);
+                  alert (responseDelete.messageResult);
               }
           )
           this.myRouringService.reloadCurrentRoute(this.router);
@@ -114,7 +118,8 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
       }
 
       /*
-  public mainPageBtn() {
+  public mainPageBtn() 
+  {
     this.router.navigateByUrl('/home');
   }
   */
@@ -156,6 +161,11 @@ export class ListMembershipComponentComponent implements OnInit, OnDestroy
               this.allDatas = response;
           }
       )*/
+  }
+
+  public orderByDescription() : void
+  {
+
   }
 
   public orderByPrice() : void
