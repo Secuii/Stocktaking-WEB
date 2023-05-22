@@ -1,1 +1,40 @@
-<p>login-component works!</p>
+<div class="allContent boxCenter boxFirst">
+
+    <div class="allContainer boxCenter boxMain">
+        <div class="row">
+            <div class="col-md-12">
+                <h2> {{ this.pageTitle }} </h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" boxCenter boxFirst">
+        <div class="row">
+            <div class="col-md-12">
+                <form #LoginForm="ngForm" (ngSubmit)="this.submitLoginForm(LoginForm.value)">
+                    <div class="sizeForms"></div>
+
+                    <div class="form-group">
+                        <label for="UserName" class="">User</label>
+                        <br>
+                        <input type="text" class="" name="email" id="email" [(ngModel)]="this.loginForm.email"
+                            placeholder="Manolito">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="Password" class="">Password</label>
+                        <br>
+                        <input type="text" class="" name="password" id="password" [(ngModel)]="this.loginForm.password"
+                            placeholder="mAnU_123">
+                    </div>
+
+
+                    <div class="boxCenter">
+                        <button type="submit" class="btn btn-primary"> Login </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

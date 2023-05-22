@@ -13,6 +13,5 @@ import { RegisterComponentModule } from './register-component/register-component
         LoginComponentModule,
         RegisterComponentModule
     ]
-  })
-  export class LoginRegisterComponentModule { }
-  
+})
+export class LoginRegisterComponentModule { }

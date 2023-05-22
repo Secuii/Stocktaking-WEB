@@ -10,61 +10,67 @@ import { SupplierPageComponent } from './pages/supplier-page/supplier-page.compo
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { MembershipPageComponent } from './pages/membership-page/membership-page.component';
 import { PermissionPageComponent } from './pages/permission-page/permission-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
-const routes: Routes = 
-[
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+const routes: Routes =
+  [
+    {
+      path: '',
+      redirectTo: 'home',
+      pathMatch: 'full'
+    },
 
-  {
-    path: 'home',
-    component: HomePageComponent
-  },
+    {
+      path: 'home',
+      component: HomePageComponent
+    },
 
-  {
-    path: 'type',
-    component: TypePageComponent
-  },
+    {
+      path: 'login',
+      component: LoginPageComponent
+    },
 
-  {
-    path: 'attribute',
-    component: AttributePageComponent
-  },
+    {
+      path: 'type',
+      component: TypePageComponent
+    },
 
-  {
-    path: 'product',
-    component: ProductPageComponent
-  },
+    {
+      path: 'attribute',
+      component: AttributePageComponent
+    },
 
-  {
-    path: 'client',
-    component: ClientPageComponent
-  },
+    {
+      path: 'product',
+      component: ProductPageComponent
+    },
 
-  {
-    path: 'supplier',
-    component: SupplierPageComponent
-  },
+    {
+      path: 'client',
+      component: ClientPageComponent
+    },
 
-  {
-    path: 'user',
-    component: UserPageComponent
-  },
+    {
+      path: 'supplier',
+      component: SupplierPageComponent
+    },
 
-  {
-    path: 'membership',
-    component: MembershipPageComponent
-  },
+    {
+      path: 'user',
+      component: UserPageComponent
+    },
 
-  {
-    path: 'permission',
-    component: PermissionPageComponent
-  }
+    {
+      path: 'membership',
+      component: MembershipPageComponent
+    },
 
-];
+    {
+      path: 'permission',
+      component: PermissionPageComponent
+    }
+
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

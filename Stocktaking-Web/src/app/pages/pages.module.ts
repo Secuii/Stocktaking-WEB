@@ -9,26 +9,28 @@ import { UserPageModule } from './user-page/user-page.module';
 import { MembershipPageModule } from './membership-page/membership-page.module';
 import { PermissionPageModule } from './permission-page/permission-page.module';
 import { SupplierPageModule } from './supplier-page/supplier-page.module';
+import { LoginPageModule } from './login-page/login-page.module';
 
 
 
 
 @NgModule({
-  declarations: 
-  [
-  ],
-  imports: 
-  [
-    MainPageModule,
-    TypePageModule,
-    AttributePageModule,
-    ProductPageModule,
-    ClientPageModule,
-    UserPageModule,
-    MembershipPageModule,
-    PermissionPageModule,
-    SupplierPageModule,
-    HttpClientModule
-  ]
+  declarations:
+    [
+    ],
+  imports:
+    [
+      MainPageModule,
+      TypePageModule,
+      AttributePageModule,
+      ProductPageModule,
+      ClientPageModule,
+      UserPageModule,
+      MembershipPageModule,
+      PermissionPageModule,
+      SupplierPageModule,
+      HttpClientModule,
+      LoginPageModule
+    ]
 })
 export class PagesModule { }
