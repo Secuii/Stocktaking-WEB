@@ -38,4 +38,26 @@
         </tbody>
       </table>
     </div>
+    
+    <br>
+
+    <div class="divtable">
+      <table class="table1 table tableUser" >
+          <thead>
+            <tr class="trUser">
+              <th scope="col" class=""> Attribute Name</th>
+              <th scope="col" class=""> Value </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of this.listProductAttribute; let i = index" class="trUser">
+              <td class=""> {{item?.attributeName}} </td>
+              <td class=""> {{item?.value}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
   </div>
+
+

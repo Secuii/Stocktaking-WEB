@@ -24,7 +24,7 @@ export class PathsApi
     static ALL_DELIVERYNOTES : string = "alldeliverynotes";
 
     // Zona Product_Attribute
-    static PRODUCTATTRIBUTE : string = "productatribute";
+    static PRODUCTATTRIBUTE : string = "productattributeAndroid";
     static ALL_PRODUCTATTRIBUTES : string = "allproductatribute";
 
     // Zona Product

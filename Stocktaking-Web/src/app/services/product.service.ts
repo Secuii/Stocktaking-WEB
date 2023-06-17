@@ -8,6 +8,7 @@ import { PathsApi } from '../PathsApi/PathsApi';
 import { MyHttpService } from './my-http-service';
 import { DeleteResponse } from '../entities-response/delete-response';
 import { ApiResponse } from '../entities-response/apiResponse';
+import { ProductAttribute } from '../entities/productAttribute';
 
 
 @Injectable()
@@ -18,6 +19,7 @@ export class ProductService extends MyHttpService
   */
     private _baseUrl: string;
     private _product: string;
+    private _productAttribute: string;
     private _products: string;
   
     /*
@@ -31,6 +33,7 @@ export class ProductService extends MyHttpService
       super();  
       this._baseUrl = PathsApi.PATH_SERVER;
       this._product = PathsApi.PRODUCT;
+      this._productAttribute= PathsApi.PRODUCTATTRIBUTE;
       this._products = PathsApi.ALL_PRODUCTS;
     }
   
@@ -75,6 +78,19 @@ export class ProductService extends MyHttpService
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._product + '?id=' + id
       return this.http.get<ApiResponse<Product>>(url, header);
+    }
+
+     /*
+      Método (cRud -> Read) Leer product
+      Objetivo:
+      Entrada:
+      Salida
+    */
+    readProductAttribute(id: number): Observable<ApiResponse<Array<ProductAttribute>>> 
+    {
+      const header = this.createHeader();
+      var url: string = this._baseUrl+ this._productAttribute + '?productId=' + id
+      return this.http.get<ApiResponse<Array<ProductAttribute>>>(url, header);
     }
     
     /*

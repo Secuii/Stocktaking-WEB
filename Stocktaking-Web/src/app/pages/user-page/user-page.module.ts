@@ -6,7 +6,6 @@ import { UpdateUserComponentModule } from 'src/app/components/User/update-user-c
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
 @NgModule({
   declarations:
     [

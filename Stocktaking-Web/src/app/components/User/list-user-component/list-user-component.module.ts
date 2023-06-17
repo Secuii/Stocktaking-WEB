@@ -4,16 +4,23 @@ import { RouterModule } from '@angular/router';
 import { ListUserComponentComponent } from './list-user-component.component';
 
 
-@NgModule({
-  declarations: [
-    ListUserComponentComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  exports: [
-    ListUserComponentComponent
-  ]
-})
+@NgModule
+(
+  {
+    declarations: 
+    [
+      ListUserComponentComponent
+    ],
+    imports: 
+    [
+      CommonModule,
+      RouterModule
+    ],
+    exports: 
+    [
+      ListUserComponentComponent
+    ]
+  }
+)
+
 export class ListUserComponentModule { }
