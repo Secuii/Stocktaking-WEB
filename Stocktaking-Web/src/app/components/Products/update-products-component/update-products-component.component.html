@@ -43,4 +43,36 @@
             </form>
         </div>
     </div>
+
+    <br>
+
+    <div class="divtable">
+      <table class="table1 table tableUser" >
+          <thead>
+            <tr class="trUser">
+              <th scope="col" class=""> Attribute Name</th>
+              <th scope="col" class=""> Value </th>
+              <th scope="col" class=""> Send value </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of this.listProductAttributeToShow; let i = index" class="trUser">
+                <td class="">
+                    <input type="text" class="form-control" name="attributeName" id="attributeName" value= {{item?.attributeName}}>
+                    
+                </td>
+                <td class=""> 
+                    <input type="text" class="form-control" name="valueAttr" id="valueAttr" value= {{item?.value}} >
+                    
+                </td>
+                <td class=""> 
+                    <button type="button" class="btn btn-outline-success btnCommon" > 
+                      Send 
+                    </button> 
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
 </div>

@@ -1,14 +1,13 @@
 import { ProductForm } from './../entities-form/product-form';
 import { Product } from './../entities/product';
 import { Observable } from 'rxjs';
-import { PathsUser } from './../PathsApi/PathsUser';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { PathsApi } from '../PathsApi/PathsApi';
 import { MyHttpService } from './my-http-service';
-import { DeleteResponse } from '../entities-response/delete-response';
 import { ApiResponse } from '../entities-response/apiResponse';
 import { ProductAttribute } from '../entities/productAttribute';
+import { TypeAttribute } from '../entities/typeAttribute';
 
 
 @Injectable()
@@ -21,6 +20,7 @@ export class ProductService extends MyHttpService
     private _product: string;
     private _productAttribute: string;
     private _products: string;
+    private _typeAttribute: string;
   
     /*
       Constructor
@@ -35,6 +35,7 @@ export class ProductService extends MyHttpService
       this._product = PathsApi.PRODUCT;
       this._productAttribute= PathsApi.PRODUCTATTRIBUTE;
       this._products = PathsApi.ALL_PRODUCTS;
+      this._typeAttribute = PathsApi.TYPEATTRIBUTE;
     }
   
     /*
@@ -44,7 +45,7 @@ export class ProductService extends MyHttpService
       Salida
     */
 
-    createProduct(newProduct: ProductForm): Observable<ApiResponse<Product>> 
+  createProduct(newProduct: ProductForm): Observable<ApiResponse<Product>> 
   {
     const header = this.createHeader();
     var url: string = this._baseUrl+ this._product
@@ -73,7 +74,7 @@ export class ProductService extends MyHttpService
       Entrada:
       Salida
     */
-      ReadProduct(id: number): Observable<ApiResponse<Product>> 
+    ReadProduct(id: number): Observable<ApiResponse<Product>> 
     {
       const header = this.createHeader();
       var url: string = this._baseUrl+ this._product + '?id=' + id
@@ -89,9 +90,24 @@ export class ProductService extends MyHttpService
     readProductAttribute(id: number): Observable<ApiResponse<Array<ProductAttribute>>> 
     {
       const header = this.createHeader();
-      var url: string = this._baseUrl+ this._productAttribute + '?productId=' + id
+      var url: string = this._baseUrl+ this._productAttribute + '?productId=' + id;
+      console.log(url);
       return this.http.get<ApiResponse<Array<ProductAttribute>>>(url, header);
     }
+
+    /*
+      Método (cRud -> Read) Leer product
+      Objetivo:
+      Entrada:
+      Salida
+    */
+      readTypeAttribute(typeId: number): Observable<ApiResponse<Array<TypeAttribute>>> 
+      {
+        const header = this.createHeader();
+        var url: string = this._baseUrl+ this._typeAttribute + '?typeId=' + typeId + '&attributeId=-404';
+        console.log(url);
+        return this.http.get<ApiResponse<Array<TypeAttribute>>>(url, header);
+      }
     
     /*
       Método (crUd -> Update) Modificar product
@@ -123,12 +139,5 @@ export class ProductService extends MyHttpService
       return this.http.delete<ApiResponse<Product>>(url, header);
     }
   
-    
-  
-      /*
-    get headers() {
-      return new HttpHeaders()
-      .set('Content-Product', 'application/json')
-      .set('Authorization', `Bearer ${localStorage.getItem('token')}`)
-    }*/
+
 }

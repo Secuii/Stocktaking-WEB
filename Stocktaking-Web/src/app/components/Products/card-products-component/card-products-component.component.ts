@@ -34,7 +34,6 @@ export class CardProductsComponentComponent implements OnInit, OnDestroy
         Variales:
     */
     @Input() product? : Product = new Product();
-
     
 
     public apiResponseProductAttribute : ApiResponse<Array<ProductAttribute>>;
@@ -77,6 +76,7 @@ export class CardProductsComponentComponent implements OnInit, OnDestroy
                     }
                 }
             )
+
         }
     }
 

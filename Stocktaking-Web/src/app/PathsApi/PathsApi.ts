@@ -44,6 +44,6 @@ export class PathsApi
     static ALL_TYPES : string = "alltypes";
 
     // Zona TypeAttribute
-    static TYPEATTRIBUTE : string = "typeattribute";
+    static TYPEATTRIBUTE : string = "alltypeattributesAndroid";
     static ALL_TYPEATRIBUTES : string = "alltypeattributes";
 }
