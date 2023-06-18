@@ -1,6 +1,6 @@
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
     <h1 class="justify-content-center tittle  mx-auto d-block top">&nbsp; &nbsp; &nbsp; MEMBERSHIPS UPDATE</h1>
-    <button type="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
+    <button type="button" class="btn btn-outline-dark top" (click)="this.goBackBtn()">Go Back</button>
 </div>
 
 
@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="name" class="texto" > Membership Name </label>
                     <br>
-                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.membershipForm.name" placeholder="Basic / Gold / etc">
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="this.membershipForm.name" >
                 </div>
                 
                 <br>
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="name" class="texto" > Membership Description </label>
                     <br>
-                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="this.membershipForm.description" placeholder="Basic / Gold / etc">
+                    <input type="text" class="form-control" name="description" id="description" [(ngModel)]="this.membershipForm.description" >
                 </div>
                 
                 <br>
@@ -35,7 +35,7 @@
                 <div class="form-group">
                     <label for="price" class="texto" > Price </label>
                     <br>
-                    <input type="number" class="form-control" name="price" id="price" [(ngModel)]="this.membershipForm.price" placeholder="€">
+                    <input type="number" class="form-control" name="price" id="price" [(ngModel)]="this.membershipForm.price" >
                 </div>
 
                 <div class="bosCenter">

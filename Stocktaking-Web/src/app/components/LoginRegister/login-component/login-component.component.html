@@ -9,29 +9,29 @@
     </div>
 
 
-    <div class=" boxCenter boxFirst">
+    <div class=" update">
         <div class="row">
             <div class="col-md-12">
                 <form #LoginForm="ngForm" (ngSubmit)="this.submitLoginForm(LoginForm.value)">
                     <div class="sizeForms"></div>
 
-                    <div class="form-group">
-                        <label for="UserName" class="">User</label>
+                    <div class="form-group ">
+                        <label for="UserName" class="form-group texto top">User</label>
                         <br>
-                        <input type="text" class="" name="email" id="email" [(ngModel)]="this.loginForm.email"
-                            placeholder="Manolito">
+                        <input type="text" class="form-control" name="email" id="email" [(ngModel)]="this.loginForm.email"
+                            placeholder="Usuario">
                     </div>
                     <br>
-                    <div class="form-group">
-                        <label for="Password" class="">Password</label>
+                    <div class="form-group ">
+                        <label for="Password" class="texto">Password</label>
                         <br>
-                        <input type="text" class="" name="password" id="password" [(ngModel)]="this.loginForm.password"
-                            placeholder="mAnU_123">
+                        <input type="password" class="form-control" name="password" id="password" [(ngModel)]="this.loginForm.password"
+                            placeholder="Contaseña">
                     </div>
 
 
-                    <div class="boxCenter">
-                        <button type="submit" class="btn btn-primary"> Login </button>
+                    <div class="bosCenter">
+                        <button type="submit" class="btn btn-outline-dark top"> Login </button>
                     </div>
                 </form>
             </div>

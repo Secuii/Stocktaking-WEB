@@ -1,6 +1,6 @@
 <div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
     <h1 class="justify-content-center tittle  mx-auto d-block top"> &nbsp; &nbsp; &nbsp; ATTRIBUTES LIST</h1>
-    <button attributes="button" class="btn btn-outline-dark " (click)="this.goBackBtn()">Go Back</button>
+    <button attributes="button" class="btn btn-outline-dark top" (click)="this.goBackBtn()">Go Back</button>
 </div>
 
 <div class="update">
@@ -19,21 +19,21 @@
                     <label for="name" class="texto"> Attributes Name </label>
                     <br>
                     <input attributes="text" class="form-control" name="name" id="name"
-                        [(ngModel)]="this.attributesForm.name" placeholder="Coche / Fruta / Guitarra / etc">
+                        [(ngModel)]="this.attributesForm.name" >
                 </div>
                 <br>
                 <div class="form-group">
                     <label for="description" class="texto"> Attributes Description </label>
                     <br>
                     <input attributes="text" class="form-control" name="description" id="description"
-                        [(ngModel)]="this.attributesForm.description" placeholder="Coche / Fruta / Guitarra / etc">
+                        [(ngModel)]="this.attributesForm.description" >
                 </div>
 
                 <div class="form-group">
                     <label for="name" class="texto"> Data Type </label>
                     <br>
                     <input attributes="text" class="form-control" name="valueType" id="valueType"
-                        [(ngModel)]="this.attributesForm.valueType" placeholder="Coche / Fruta / Guitarra / etc">
+                        [(ngModel)]="this.attributesForm.valueType" >
                 </div>
 
                 <br>
