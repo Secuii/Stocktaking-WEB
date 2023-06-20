@@ -1,1 +1,24 @@
-<p>supplier-page works!</p>
+<div class="">
+    <h2> {{ this.pageTittle }}</h2>
+</div>
+
+<!-- Componente Lista -->
+<app-list-suppliers-component 
+    *ngIf = "this.statusPage==1" 
+    (selectSupplierEvent) = "selectSupplier($event)" 
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-list-suppliers-component>
+
+<!-- Componente Card -->
+<app-card-suppliers-component
+    *ngIf = "this.statusPage==2"
+    [supplier] = "this.supplierSelected"
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-card-suppliers-component>
+
+<!-- Componente Update -->
+<app-update-suppliers-component 
+    *ngIf="this.statusPage==0 || this.statusPage==3"
+    [supplier] = "this.supplierSelected"
+    (statusPageEvent) = changeStatusPage($event)>
+</app-update-suppliers-component>

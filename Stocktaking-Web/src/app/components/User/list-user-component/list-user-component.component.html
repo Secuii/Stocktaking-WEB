@@ -1,0 +1,53 @@
+<div class="">
+    <div class=" container d-grid gap-2 d-md-flex justify-content-md-end ">
+        <div class="justify-content-center tittle tittle mx-auto d-block top"> &nbsp; &nbsp; &nbsp;USER LIST</div>
+        <button type="button" class="btn btn-outline-dark button1" (click)="this.createUserBtn()">Create User</button>
+    </div>
+    <div class="divtable">
+        <table class="table1 table tableUser">
+            <thead>
+                <tr class="trUser">
+                    <th scope="col" class="" (click)="this.orderById()">Id</th>
+                    <th scope="col" class="" (click)="this.orderByName()">Name</th>
+                    <th scope="col" class="" (click)="this.orderByLastName()">Last Name</th>
+                    <th scope="col" class="" (click)="this.orderByLastName()">Second Last Name</th>
+                    <th scope="col" class="" (click)="this.orderByEmail()">Email</th>
+                    <th scope="col" class="" (click)="this.orderByAge()">Age</th>
+                    <th scope="col" class="" (click)="this.orderByMembership()">Membership</th>
+                    <th scope="col" class="">Show More</th>
+                    <th scope="col" class="">Edit</th>
+                    <th scope="col" class="">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of this.allEntities; let i = index" class="trUser">
+                    <td class=""> {{item?.id}} </td>
+                    <td class=""> {{item?.name}} </td>
+                    <td class=""> {{item?.lastName}} </td>
+                    <td class=""> {{item?.secondLastName}} </td>
+                    <td class=""> {{item?.email}} </td>
+                    <td class=""> {{item?.age}} </td>
+                    <td class=""> {{item?.membership?.name}} </td>
+                    <td class="">
+                        <button type="button" class="btn btn-outline-success btnCommon"
+                            (click)="this.showUserBtn(item)">
+                            SHOW
+                        </button>
+                    </td>
+                    <td class="tdUserNormal">
+                        <button type="button" class="btn btn-outline-warning btnCommon"
+                            (click)="this.updateUserBtn(item)">
+                            UPDATE
+                        </button>
+                    </td>
+                    <td class="tdUserNormal">
+                        <button type="button" class="btn btn-link btnCommon" style="color: red"
+                            (click)="this.deleteUserBtn(item)">
+                            DELETE
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

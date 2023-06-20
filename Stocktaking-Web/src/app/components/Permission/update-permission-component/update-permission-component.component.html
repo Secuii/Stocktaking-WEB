@@ -1,0 +1,40 @@
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center tittle  mx-auto d-block top"> &nbsp; &nbsp; &nbsp; PERMISSIONS LIST</h1>
+    <button permission="button" class="btn btn-outline-dark top" (click)="this.goBackBtn()">Go Back</button>
+</div>
+
+<div class="update">
+    <div class="row">
+        <div class="col-md-12">
+            <form #PermissionForm="ngForm" (ngSubmit)="this.submitSendDatas(PermissionForm.value)">
+                <div class="sizeForm"></div>
+
+                <div class="form-group texto">
+                    <label for="id?" class=""><b>ID Permission</b> </label>
+                    <br>
+                    {{ permissionForm.id }}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto"> Permission Name </label>
+                    <br>
+                    <input permission="text" class="form-control" name="name" id="name"
+                        [(ngModel)]="this.permissionForm.name" placeholder="Nombre del permiso">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="description" class="texto"> Permission Description </label>
+                    <br>
+                    <input permission="text" class="form-control" name="description" id="description"
+                        [(ngModel)]="this.permissionForm.description" placeholder="Descripcion del permiso">
+                </div>
+
+                <br>
+
+                <div class="bosCenter">
+                    <button permission="submit" class="btn btn-outline-dark"> Send Datas </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

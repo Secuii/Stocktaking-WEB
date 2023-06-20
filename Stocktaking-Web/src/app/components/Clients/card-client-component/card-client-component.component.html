@@ -1,1 +1,48 @@
-<p>card-client-component works!</p>
+
+<div class="container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <h1 class="justify-content-center tittle mx-auto d-block top"> &nbsp; &nbsp; &nbsp; CLIENT CARD</h1>
+    <button type="button" class="btn btn-outline-dark top" (click)="this.goBackBtn()">
+      Go Back
+    </button>
+  </div>
+
+  <div>
+    <div class="divFirstCard">
+      <label class="labelCard">
+        <h1>
+          {{ client?.name }}
+          <!-- Data Binding: Recoge del componente. -->
+        </h1>
+      </label>
+    </div>
+    <div class="divtable">
+      <table class="table">
+        <tbody>
+          <tr class="trUser2">
+            <td class="tdCardNormal"><b><h3>Id</h3></b></td>
+            <td class="tdUserNormal">{{ client?.id }}</td>
+          </tr>
+
+          <tr class="trUser2">
+            <td class="tdCardNormal"><b><h3>Name</h3></b></td>
+            <td class="tdUserNormal">{{ client?.name }}</td>
+          </tr>
+
+          <tr class="trUser2">
+            <td class="tdCardNormal"><b><h3>Lastname</h3></b></td>
+            <td class="tdUserNormal">{{ client?.lastName }}</td>
+          </tr>
+
+          <tr class="trUser2">
+            <td class="tdCardNormal"><b><h3>Second Lastname</h3></b></td>
+            <td class="tdUserNormal">{{ client?.secondLastName }}</td>
+          </tr>
+
+          <tr class="trUser2">
+            <td class="tdCardNormal"><b><h3>Age</h3></b></td>
+            <td class="tdUserNormal">{{ client?.age }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

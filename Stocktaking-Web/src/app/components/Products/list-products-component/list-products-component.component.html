@@ -1,10 +1,45 @@
-<div class="list-group">
-    <button type="button" class="list-group-item list-group-item-action active">
-      Cras justo odio
-    </button>
-    <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-    <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-    <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-    <button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
-  </div>
-  
+<div class="">
+  <div class=" container d-grid gap-2 d-md-flex justify-content-md-end ">
+    <div class="justify-content-center tittle tittle mx-auto d-block top"> &nbsp; &nbsp; &nbsp;PRODUCT LIST</div>
+    <button type="button" class="btn btn-outline-dark button1" (click)="this.createProductBtn()">Create Product</button>
+</div>
+<div class="divtable">
+<table class="table1 table tableUser" >
+    <thead>
+      <tr class="trUser">
+        <th scope="col" class="" (click)="this.orderById()">Id</th>
+        <th scope="col" class="" (click)="this.orderByName()">Name</th>
+        <th scope="col" class="" (click)="this.orderByStock()">Stock</th>
+        <th scope="col" class="" (click)="this.orderByType()">Type</th>
+        <th scope="col" class="">Show More</th>
+        <th scope="col" class="">Edit</th>
+        <th scope="col" class="">Delete</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of this.allEntities; let i = index" class="trUser">
+        <td class=""> {{item?.id}} </td>
+        <td class=""> {{item?.name}} </td>
+        <td class=""> {{item?.stock}} </td>
+        <td class=""> {{item?.type?.name}} </td>
+        <td class=""> 
+            <button type="button" class="btn btn-outline-success btnCommon" (click)="this.showProductBtn(item)"> 
+              SHOW 
+            </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-outline-warning btnCommon" (click)="this.updateProductBtn(item)">
+              UPDATE 
+            </button> 
+        </td>
+        <td class="tdUserNormal"> 
+            <button type="button" class="btn btn-link btnCommon" style="color: red" (click)="this.deleteProductBtn(item)"> 
+              DELETE 
+            </button> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

@@ -1,0 +1,77 @@
+<div class=" container d-grid gap-2 d-md-flex justify-content-md-end">
+    <h1 class="justify-content-center tittle  mx-auto d-block top"> &nbsp; &nbsp; &nbsp; USERS LIST</h1>
+    <button user="button" class="btn btn-outline-dark top" (click)="this.goBackBtn()">Go Back</button>
+</div>
+
+<div class="update">
+    <div class="row">
+        <div class="col-md-12">
+            <form #UserForm="ngForm" (ngSubmit)="this.submitSendDatas(UserForm.value)">
+                <div class="sizeForm"></div>
+
+                <div class="form-group texto">
+                    <label for="id?" class=""><b>ID User</b> </label>
+                    <br>
+                    {{ userForm.id }}
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="name" class="texto"> User Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="name" id="name" [(ngModel)]="this.userForm.name"
+                        >
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="lastName" class="texto"> User Last Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="lastName" id="lastName"
+                        [(ngModel)]="this.userForm.lastName" >
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="texto"> User Second Last Name </label>
+                    <br>
+                    <input user="text" class="form-control" name="secondLastName" id="secondLastName"
+                        [(ngModel)]="this.userForm.secondLastName" >
+                </div>
+
+                <br>
+                <div class="form-group texto">
+                    <label for="email" class="email"> Email </label>
+                    <br>
+                    <input user="text" class="form-control" name="email" id="email" [(ngModel)]="this.userForm.email" type="email"
+                        >
+                </div>
+                <br>
+                <div class="form-group texto">
+                    <label for="age" class="number"> Age </label>
+                    <br>
+                    <input user="number" class="form-control" name="age" id="age" [(ngModel)]="this.userForm.age" type="num
+                    " >
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password" class="texto"> Password </label>
+                    <br>
+                    <input user="text" class="form-control" name="password" id="password" type="password"
+                        [(ngModel)]="this.userForm.password" >
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="membership" class="texto"> Membership </label>
+                    <br>
+                    <select [(ngModel)]="this.userForm.membership" name="workUser.membership" (change)="changeMembershipSelection()">
+                        <option *ngFor="let membership of listMemberships" [ngValue]="membership">{{ membership.name }}</option>
+                    </select>
+                      
+                </div>
+                <br>
+
+                <div class="bosCenter">
+                    <button user="submit" class="btn btn-outline-dark"> Send Datas </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

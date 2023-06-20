@@ -1,0 +1,18 @@
+<div class="">
+    <h2> {{ this.pageTittle }}</h2>
+</div>
+
+<!-- Componente Lista -->
+<app-list-user-component *ngIf="this.statusPage==1" (selectUserEvent)="selectUser($event)"
+    (statusPageEvent)="changeStatusPage($event)">
+</app-list-user-component>
+
+<!-- Componente Card -->
+<app-card-user-component *ngIf="this.statusPage==2" [user]="this.userSelected"
+    (statusPageEvent)="changeStatusPage($event)">
+</app-card-user-component>
+
+<!-- Componente Update -->
+<app-update-user-component *ngIf="this.statusPage==0 || this.statusPage==3" [user]="this.userSelected"
+    (statusPageEvent)=changeStatusPage($event)>
+</app-update-user-component>

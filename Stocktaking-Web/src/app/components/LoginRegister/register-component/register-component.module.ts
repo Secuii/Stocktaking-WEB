@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RegisterComponentRoutingModule } from './register-component-routing.module';
+import { RouterModule } from '@angular/router';
+import { RegisterComponentComponent } from './register-component.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    RegisterComponentComponent
+  ],
   imports: [
     CommonModule,
-    RegisterComponentRoutingModule
+    RouterModule
   ]
 })
 export class RegisterComponentModule { }

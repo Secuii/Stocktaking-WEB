@@ -1,1 +1,24 @@
-<p>type-page works!</p>
+<div class="">
+    <h2> {{ this.pageTittle }}</h2>
+</div>
+
+<!-- Componente Lista -->
+<app-list-types-component 
+    *ngIf = "this.statusPage==1" 
+    (selectTypeEvent) = "selectType($event)" 
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-list-types-component>
+
+<!-- Componente Card -->
+<app-card-types-component 
+    *ngIf = "this.statusPage==2"
+    [type] = "this.typeSelected"
+    (statusPageEvent) = "changeStatusPage($event)">
+</app-card-types-component>
+
+<!-- Componente Update -->
+<app-update-types-component 
+    *ngIf="this.statusPage==0 || this.statusPage==3"
+    [type] = "this.typeSelected"
+    (statusPageEvent) = changeStatusPage($event)>
+</app-update-types-component>
